@@ -1,0 +1,150 @@
+.invitation-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-content {
+  width: 100%;
+  max-width: 480px;
+  background: white;
+  min-height: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Estilo común de las cajas / tarjetas */
+.header-card, .details-card, .pets-card {
+  background: var(--background-color);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(138, 177, 150, 0.2);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.standalone-card {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+
+.illustration-wrapper {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+}
+
+.card-illustration-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Degrado que funde la ilustración con el contenido de abajo */
+.fade-overlay-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  max-height: 150px;
+  background: linear-gradient(to bottom, transparent, var(--background-color));
+}
+
+.card-content {
+  padding: 0 25px 35px 25px; 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: var(--background-color);
+  position: relative;
+  z-index: 2;
+  margin-top: -30px; 
+}
+
+.main-title-content {
+  padding-top: 10px;
+}
+
+.big-title {
+  font-size: 3.5rem;
+  margin-top: 0;
+}
+
+.guest-name {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--primary-dark);
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.tickets-info {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-top: -5px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.location-item {
+  align-items: flex-start;
+  margin-top: 5px;
+}
+
+.icon {
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.map-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 999px;
+  margin: 10px auto 0;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.map-button:hover {
+  background: #cba477;
+  transform: translateY(-2px);
+}
+
+.pets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.pet-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 3px solid white;
+}
+
+.footer-spacer {
+  height: 60px;
+}
+

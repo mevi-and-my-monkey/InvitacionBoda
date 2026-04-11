@@ -1,0 +1,54 @@
+.confirmation-card {
+  background: var(--background-color);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(138, 177, 150, 0.2);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.form-group label {
+  font-family: var(--font-heading);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.readonly-input {
+  background-color: #f1ede5 !important;
+  color: var(--text-light) !important;
+  cursor: not-allowed;
+  font-style: italic;
+  border: 1px dashed rgba(138, 177, 150, 0.4);
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 60px 20px;
+  z-index: 5;
+}

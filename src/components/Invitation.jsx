@@ -5,10 +5,7 @@ import ConfirmationForm from './ConfirmationForm';
 import './Invitation.css';
 
 import img1 from '../assets/media__1775949218809.jpg'; // Pareja
-import img2 from '../assets/media__1775949218836.jpg'; // Paisaje Cuyo y Pez
-import img3 from '../assets/media__1775949218980.jpg'; // Mascota en traje
-import img4 from '../assets/media__1775949219715.jpg'; // Mascota 2
-import img5 from '../assets/media__1775949220329.jpg'; // Mascota 3
+import imgCuandoDonde from '../assets/cuando-donde-bg.png'; // Fondo cuando y donde
 
 export default function Invitation({ guestName, tickets }) {
   const mapLink = "https://maps.app.goo.gl/4RfwJkoV3HnNcngL6";
@@ -50,49 +47,39 @@ export default function Invitation({ guestName, tickets }) {
           </div>
         </motion.div>
 
-        {/* Detalles del evento (Sin ilustración superior) */}
-        <motion.div className="details-card standalone-card" variants={itemVariants}>
-          <div className="card-content" style={{paddingTop: '35px', marginTop: '0'}}>
-            <h3 className="heading">Cuándo &amp; Dónde</h3>
-            
-            <div className="detail-item">
-              <Calendar className="icon" size={24} />
-              <p className="body-text">Sábado, 24 de Abril 2027</p>
-            </div>
-            
-            <div className="detail-item">
-              <Clock className="icon" size={24} />
-              <p className="body-text">Ceremonia a las 4:00 PM</p>
-            </div>
+        {/* Detalles del evento (Con ilustración de recuadro) */}
+        <motion.div className="details-bg-card" variants={itemVariants}>
+          <div className="location-image-wrapper">
+             <img src={imgCuandoDonde} alt="Fondo Cuando y Donde" className="location-bg-image" />
+             <div className="location-overlay-content">
+               <h4 className="heading location-heading">Cuándo &amp; Dónde</h4>
+               
+               <div className="detail-item location-detail-item">
+                 <Calendar className="icon" size={14} />
+                 <p className="body-text location-body-text">Sábado, 24 de Abril 2027</p>
+               </div>
+               
+               <div className="detail-item location-detail-item">
+                 <Clock className="icon" size={14} />
+                 <p className="body-text location-body-text">Ceremonia a las 4:00 PM</p>
+               </div>
 
-            <div className="detail-item location-item">
-              <MapPin className="icon" size={24} />
-              <div className="location-text">
-                <p className="body-text" style={{fontWeight: 'bold', color: 'var(--text-main)'}}>Lienzo Charro de Aragón</p>
-                <p className="body-text" style={{fontSize: '0.9rem'}}>Av. 661 300, San Juan de Aragón<br/>Gustavo A. Madero, 07920 CDMX</p>
-              </div>
-            </div>
-            
-            <a href={mapLink} target="_blank" rel="noopener noreferrer" className="map-button" style={{textDecoration: 'none'}}>
-              <MapPin size={18} />
-              Ver Mapa
-            </a>
+               <div className="detail-item location-item-centered">
+                 <MapPin className="icon" size={14} />
+                 <div className="location-text">
+                   <p className="body-text location-body-text" style={{fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '2px'}}>Lienzo Charro de Aragón</p>
+                   <p className="body-text location-body-text" style={{fontSize: '0.65rem', lineHeight: '1.2'}}>Av. 661 300, San Juan de Aragón<br/>Gustavo A. Madero, 07920 CDMX</p>
+                 </div>
+               </div>
+               
+               <a href={mapLink} target="_blank" rel="noopener noreferrer" className="map-button small-map-button" style={{textDecoration: 'none'}}>
+                 <MapPin size={12} />
+                 Ver Mapa
+               </a>
+             </div>
           </div>
         </motion.div>
 
-        {/* Contenedor Familia / Mascotas */}
-        <motion.div className="pets-card" variants={itemVariants}>
-          <div className="card-content" style={{paddingTop: '35px', marginTop: '0'}}>
-            <h3 className="heading">Nuestra Familia</h3>
-            <p className="body-text" style={{marginBottom: '20px'}}>¡Ellos también te esperan!</p>
-            <div className="pets-grid">
-              <img src={img2} alt="Pez y Cuyo" className="pet-img" />
-              <img src={img3} alt="Ramón" className="pet-img" />
-              <img src={img4} alt="Rondoll azul" className="pet-img" />
-              <img src={img5} alt="Rondoll floral" className="pet-img" />
-            </div>
-          </div>
-        </motion.div>
 
         <motion.div className="form-section" variants={itemVariants}>
           <ConfirmationForm guestName={guestName} maxTickets={tickets} />

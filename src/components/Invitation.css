@@ -148,3 +148,87 @@
   height: 60px;
 }
 
+/* Estilos para el recuadro "Cuándo & Dónde" con imagen de fondo */
+.details-bg-card {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+  background: transparent;
+  margin-top: 10px;
+}
+
+.location-image-wrapper {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.location-bg-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.location-overlay-content {
+  position: absolute;
+  top: 55%; /* Bajar un poco más para que no quede muy pegado arriba */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55%;  /* Ajuste a proporción del recuadro interior */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  gap: 5px;
+}
+
+/* Estilos de tipografía adaptados al nuevo tamaño reducido para que quepa */
+.location-heading {
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+
+.location-detail-item {
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  margin: 2px 0;
+}
+
+.location-item-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 5px;
+}
+
+.location-body-text {
+  font-size: 0.7rem;
+  margin: 0;
+}
+
+.location-item-centered .location-text {
+  text-align: center;
+}
+
+.location-item-centered .icon {
+  margin-bottom: 2px;
+}
+
+.small-map-button {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  gap: 6px;
+}
+

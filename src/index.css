@@ -5,10 +5,12 @@
   --text-main: #3b4440;
   --text-light: #7a827e;
   --accent-color: #dcb88e;
-  
-  --font-names: 'Great Vibes', cursive;
+  --navy: #2d3a4a;
+  --rose: #c9878e;
+
+  --font-names:   'Great Vibes', cursive;
   --font-heading: 'Playfair Display', serif;
-  --font-body: 'Lato', sans-serif;
+  --font-body:    'Lato', sans-serif;
 }
 
 * {
@@ -21,101 +23,56 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-body);
-  background-color: #ebedea; /* Slightly darker background outside mobile view */
+  background-color: #e8ebe6;
   color: var(--text-main);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 #root {
   width: 100%;
-  max-width: 480px; /* Mobile constraint */
+  max-width: 480px;
   min-height: 100vh;
   background-color: var(--background-color);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.1);
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-button {
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(138, 177, 150, 0.3);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(138, 177, 150, 0.4);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-.title {
-  font-family: var(--font-names);
-  font-size: 3.5rem;
-  font-weight: 400;
-  color: var(--primary-dark);
-  text-align: center;
-  margin: 0;
-  line-height: 1.2;
-}
-
-.heading {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 12px;
-}
-
-.body-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  text-align: center;
-  color: var(--text-light);
-}
-
-/* Utils */
-.fade-in {
-  animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-input, select {
+.app-container {
   width: 100%;
-  padding: 14px;
-  border: 1px solid #d2ddd4;
-  border-radius: 12px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ─── Global button reset (avoid override by inv-cal-btn etc.) ─ */
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+/* ─── Global input / select ──────────────────────────────────── */
+input, select, textarea {
   font-family: var(--font-body);
   font-size: 1rem;
-  background: white;
   color: var(--text-main);
+  background: white;
   transition: border-color 0.3s;
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--primary-color);
+}
+
+/* ─── Utilities ──────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
 }

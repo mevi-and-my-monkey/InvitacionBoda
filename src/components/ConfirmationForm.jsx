@@ -1,81 +1,131 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { Send, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import './ConfirmationForm.css';
-import imgConfirmacion from '../assets/confirmar-asistencia-bg.png';
+import imgFrame from '../assets/confirmar-asistencia-bg.png';
 
 export default function ConfirmationForm({ guestName, maxTickets }) {
-  const [selectedTickets, setSelectedTickets] = useState(maxTickets);
+  const [attending, setAttending] = useState(null); // null | true | false
+  const [count, setCount]         = useState(maxTickets);
+  const [note, setNote]           = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (selectedTickets > 0) {
+    if (attending === null) return;
+    if (attending) {
       confetti({
         particleCount: 150,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#8ab196', '#dcb88e', '#ffffff']
+        colors: ['#8ab196', '#dcb88e', '#f5c6cb'],
       });
     }
     setSubmitted(true);
-    console.log(`Invitado: ${guestName}, Boletos confirmados: ${selectedTickets}`);
+    console.log({ guestName, attending, count: attending ? count : 0, note });
   };
 
-  if (submitted) {
-    return (
-      <div className="confirmation-bg-card">
-        <div className="confirmation-image-wrapper">
-          <img src={imgConfirmacion} alt="Fondo Confirmación" className="confirmation-bg-image" />
-          <div className="confirmation-overlay-content">
-            <div className="success-message" style={{padding: '0 10px'}}>
-              <CheckCircle2 color="var(--primary-color)" size={36} />
-              <h3 className="heading overlay-heading" style={{marginTop: '10px'}}>¡Gracias!</h3>
-              <p className="body-text overlay-body-text">
-                {selectedTickets > 0 ? 'Los esperamos para celebrar. ¡Estamos muy felices!' : 'Te echaremos de menos. Te llevamos en el corazón.'}
+  return (
+    <div className="cf-wrap">
+      <p className="cf-deadline">CONFIRMA ANTES DEL 24 DE MARZO</p>
+
+      {/* Dark header */}
+      <div className="cf-header">
+        <h2 className="cf-title">¿Vienes?</h2>
+        <p className="cf-subtitle">Tu confirmación liga directo a nosotros.</p>
+      </div>
+
+      {/* Frame image + form overlay */}
+      <div className="cf-frame-wrap">
+        <img src={imgFrame} alt="" className="cf-frame-img" aria-hidden="true" />
+
+        <div className="cf-overlay">
+          {submitted ? (
+            <div className="cf-success">
+              <CheckCircle2 color="var(--primary-dark)" size={30} />
+              <p className="cf-success-msg">
+                {attending
+                  ? '¡Los esperamos para celebrar!'
+                  : 'Te echaremos de menos. ❤'}
               </p>
             </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+          ) : (
+            <form className="cf-form" onSubmit={handleSubmit}>
 
-  const ticketOptions = Array.from({length: maxTickets}, (_, i) => i + 1);
+              {/* Nombre */}
+              <div className="cf-field">
+                <label className="cf-label">TU NOMBRE</label>
+                <input
+                  type="text"
+                  value={guestName}
+                  readOnly
+                  className="cf-input cf-input-readonly"
+                />
+              </div>
 
-  return (
-    <div className="confirmation-bg-card">
-      <div className="confirmation-image-wrapper">
-        <img src={imgConfirmacion} alt="Fondo Confirmación" className="confirmation-bg-image" />
-        <div className="confirmation-overlay-content">
-          <h3 className="heading overlay-heading" style={{marginTop: 0}}>Confirmar</h3>
-          <p className="body-text overlay-body-text" style={{marginBottom: '5px'}}>Ayúdanos a contemplarte.</p>
-          
-          <form onSubmit={handleSubmit} className="form-layout-overlay">
-            <div className="form-group-overlay">
-              <label className="overlay-label">Invitado</label>
-              <input type="text" value={guestName} readOnly className="readonly-input overlay-input" />
-            </div>
-            
-            <div className="form-group-overlay">
-              <label className="overlay-label">Boletos</label>
-              <select 
-                value={selectedTickets} 
-                onChange={(e) => setSelectedTickets(Number(e.target.value))}
-                className="ticket-select overlay-select"
+              {/* Asistencia toggle */}
+              <div className="cf-field">
+                <label className="cf-label">¿NOS ACOMPAÑAS?</label>
+                <div className="cf-toggle">
+                  <button
+                    type="button"
+                    className={`cf-toggle-btn${attending === true ? ' active' : ''}`}
+                    onClick={() => { setAttending(true); if (count === 0) setCount(1); }}
+                  >
+                    Sí, ahí estaré
+                  </button>
+                  <button
+                    type="button"
+                    className={`cf-toggle-btn${attending === false ? ' active' : ''}`}
+                    onClick={() => { setAttending(false); setCount(0); }}
+                  >
+                    No podré ir
+                  </button>
+                </div>
+              </div>
+
+              {/* Counter — only when attending */}
+              {attending === true && (
+                <div className="cf-field">
+                  <label className="cf-label">PERSONAS CONFIRMADAS</label>
+                  <div className="cf-counter">
+                    <button
+                      type="button"
+                      className="cf-counter-btn"
+                      onClick={() => setCount(c => Math.max(1, c - 1))}
+                    >−</button>
+                    <span className="cf-counter-val">{count}</span>
+                    <button
+                      type="button"
+                      className="cf-counter-btn"
+                      onClick={() => setCount(c => Math.min(maxTickets, c + 1))}
+                    >+</button>
+                  </div>
+                </div>
+              )}
+
+              {/* Nota */}
+              <div className="cf-field">
+                <label className="cf-label">NOTA (OPCIONAL)</label>
+                <textarea
+                  className="cf-textarea"
+                  placeholder="Restricciones alimentarias..."
+                  value={note}
+                  onChange={e => setNote(e.target.value)}
+                  rows={2}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="cf-submit"
+                disabled={attending === null}
               >
-                <option value={0}>No podré asistir</option>
-                {ticketOptions.map(num => (
-                  <option key={num} value={num}>{num} {num === 1 ? 'Persona' : 'Personas'}</option>
-                ))}
-              </select>
-            </div>
+                Confirmar
+              </button>
 
-            <button type="submit" className="submit-button small-submit-button">
-              <Send size={14} />
-              <span style={{fontSize: '0.8rem'}}>Enviar</span>
-            </button>
-          </form>
+            </form>
+          )}
         </div>
       </div>
     </div>

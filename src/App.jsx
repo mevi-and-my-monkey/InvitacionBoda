@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Envelope from './components/Envelope';
 import Invitation from './components/Invitation';
-import './App.css'; // Just for layout
+import './App.css';
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen]     = useState(false);
   const [guestName, setGuestName] = useState('Invitado Especial');
-  const [tickets, setTickets] = useState(1);
+  const [tickets, setTickets]   = useState(1);
 
   useEffect(() => {
-    // Leer params de la URL: ?invitado=Familia+Garcia&boletos=4
     const params = new URLSearchParams(window.location.search);
-    const invitadoParam = params.get('invitado');
-    const boletosParam = params.get('boletos');
-
-    if (invitadoParam) {
-      setGuestName(invitadoParam);
-    }
-    if (boletosParam) {
-      setTickets(parseInt(boletosParam, 10) || 1);
-    }
+    const invitado = params.get('invitado');
+    const boletos  = params.get('boletos');
+    if (invitado) setGuestName(invitado);
+    if (boletos)  setTickets(parseInt(boletos, 10) || 1);
   }, []);
 
   return (
     <div className="app-container">
-      {!isOpen ? (
-        <Envelope onOpen={() => setIsOpen(true)} />
-      ) : (
-        <Invitation guestName={guestName} tickets={tickets} />
-      )}
+      <AnimatePresence mode="wait">
+        {!isOpen ? (
+          <Envelope key="envelope" onOpen={() => setIsOpen(true)} />
+        ) : (
+          <Invitation key="invitation" guestName={guestName} tickets={tickets} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

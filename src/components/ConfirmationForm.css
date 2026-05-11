@@ -1,145 +1,253 @@
-.confirmation-card {
-  background: var(--background-color);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(138, 177, 150, 0.2);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
+/* ─── Wrapper ───────────────────────────────────────────── */
+.cf-wrap {
+  width: 100%;
 }
 
-.form-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 15px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-}
-
-.form-group label {
+.cf-deadline {
   font-family: var(--font-heading);
-  color: var(--text-main);
-  font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 0.57rem;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-align: center;
+  margin: 0 0 14px;
 }
 
-.readonly-input {
-  background-color: #f1ede5 !important;
-  color: var(--text-light) !important;
-  cursor: not-allowed;
-  font-style: italic;
-  border: 1px dashed rgba(138, 177, 150, 0.4);
+/* ─── Dark header ───────────────────────────────────────── */
+.cf-header {
+  background: linear-gradient(150deg, #2d3a4a 0%, #3d5068 100%);
+  padding: 30px 24px 26px;
+  text-align: center;
 }
 
-.submit-button {
-  width: 100%;
-  margin-top: 10px;
+.cf-title {
+  font-family: var(--font-names);
+  font-size: 3.6rem;
+  color: #f5e8d0;
+  margin: 0 0 6px;
+  line-height: 1;
 }
 
-.success-message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px 60px 20px;
-  z-index: 5;
+.cf-subtitle {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
 }
 
-/* Estilos para el recuadro "Confirmar Asistencia" con imagen de fondo */
-.confirmation-bg-card {
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.04);
-  background: transparent;
-  margin-top: 10px;
-}
-
-.confirmation-image-wrapper {
+/* ─── Frame image ───────────────────────────────────────── */
+.cf-frame-wrap {
   position: relative;
   width: 100%;
-  line-height: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.confirmation-bg-image {
+.cf-frame-img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.confirmation-overlay-content {
+/* ─── Form overlay — sits inside the golden ornate frame ── */
+.cf-overlay {
   position: absolute;
-  top: 42%; /* El recuadro comienza algo arriba porque abajo están los perritos */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 65%;  /* Ajuste a proporción del recuadro interior */
-  height: auto;
+  /* Golden frame area: roughly 10%–72% vertically, 10%–90% horizontally */
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 27%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 2;
-  gap: 12px; /* Separa los textos principales */
+  align-items: stretch;
+  padding: 6px 10px;
+  overflow-y: auto;
+  /* Hide scrollbar but allow scrolling if content overflows */
+  scrollbar-width: none;
 }
+.cf-overlay::-webkit-scrollbar { display: none; }
 
-/* Reducción de tamaños en formulario para que quepa bien dentro de la ilustración */
-.overlay-heading {
-  font-size: 1.25rem;
-  margin-bottom: 0;
-}
-
-.overlay-body-text {
-  font-size: 0.75rem;
-  line-height: 1.3;
-  margin: 0;
-}
-
-.form-layout-overlay {
+/* ─── Success state ─────────────────────────────────────── */
+.cf-success {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Separa más los grupos del formulario */
-  margin-top: 5px;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  padding: 16px 8px;
+}
+
+.cf-success-msg {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ─── Form ──────────────────────────────────────────────── */
+.cf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
   width: 100%;
 }
 
-.form-group-overlay {
+.cf-field {
   display: flex;
   flex-direction: column;
-  gap: 6px; /* Separa el label del input */
-  text-align: left;
+  gap: 4px;
 }
 
-.overlay-label {
+.cf-label {
   font-family: var(--font-heading);
-  color: var(--text-main);
-  font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.52rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
 }
 
-.overlay-input, .overlay-select {
-  padding: 8px;
-  font-size: 0.85rem;
+.cf-input {
+  padding: 7px 10px;
+  border: 1.5px solid #d2ddd4;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  background: white;
+  color: var(--text-main);
   width: 100%;
   box-sizing: border-box;
+  transition: border-color 0.25s;
 }
 
-.small-submit-button {
-  padding: 8px 16px;
-  margin-top: 10px;
+.cf-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.cf-input-readonly {
+  background: #f5f0ea !important;
+  color: var(--text-light) !important;
+  cursor: not-allowed;
+  font-style: italic;
+}
+
+/* ─── Toggle buttons ────────────────────────────────────── */
+.cf-toggle {
+  display: flex;
+  gap: 6px;
+}
+
+.cf-toggle-btn {
+  flex: 1;
+  padding: 8px 6px;
+  border: 1.5px solid #d2ddd4;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  background: white;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.22s;
+  box-shadow: none;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.cf-toggle-btn.active {
+  background: #2d3a4a;
+  border-color: #2d3a4a;
+  color: white;
+  box-shadow: 0 3px 10px rgba(45,58,74,0.28);
+}
+
+.cf-toggle-btn:hover:not(.active) {
+  border-color: var(--primary-color);
+  color: var(--primary-dark);
+}
+
+/* ─── Counter ───────────────────────────────────────────── */
+.cf-counter {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 18px;
+}
+
+.cf-counter-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid #d2ddd4;
+  background: white;
+  color: var(--text-main);
+  font-size: 1.15rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: none;
+  transition: all 0.22s;
+  flex-shrink: 0;
+}
+
+.cf-counter-btn:hover {
+  border-color: var(--primary-color);
+  background: rgba(138,177,150,0.1);
+}
+
+.cf-counter-val {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--text-main);
+  min-width: 28px;
+  text-align: center;
+}
+
+/* ─── Textarea ──────────────────────────────────────────── */
+.cf-textarea {
+  padding: 7px 10px;
+  border: 1.5px solid #d2ddd4;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  background: white;
+  color: var(--text-main);
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.5;
+  transition: border-color 0.25s;
+}
+
+.cf-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* ─── Submit ────────────────────────────────────────────── */
+.cf-submit {
+  background: #2d3a4a;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background 0.25s, opacity 0.25s;
+  box-shadow: 0 3px 12px rgba(45,58,74,0.22);
+  display: block;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.cf-submit:hover:not(:disabled) {
+  background: #3d5068;
+}
+
+.cf-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }

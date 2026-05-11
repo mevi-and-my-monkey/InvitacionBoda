@@ -1,92 +1,373 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, Clock } from 'lucide-react';
+import { MapPin, Phone } from 'lucide-react';
 import ConfirmationForm from './ConfirmationForm';
 import './Invitation.css';
 
-import img1 from '../assets/media__1775949218809.jpg'; // Pareja
-import imgCuandoDonde from '../assets/cuando-donde-bg.png'; // Fondo cuando y donde
+import imgCouple from '../assets/media__1775949218809.jpg';
+import imgPets   from '../assets/media__1775949218836.jpg';
 
+// ── Countdown ──────────────────────────────────────────────
+const WEDDING_DATE = new Date('2027-04-24T16:00:00');
+
+function getTimeLeft() {
+  const diff = WEDDING_DATE - Date.now();
+  if (diff <= 0) return { days: 0, hours: 0, mins: 0, segs: 0 };
+  return {
+    days:  Math.floor(diff / 86400000),
+    hours: Math.floor((diff % 86400000) / 3600000),
+    mins:  Math.floor((diff % 3600000) / 60000),
+    segs:  Math.floor((diff % 60000) / 1000),
+  };
+}
+
+function useCountdown() {
+  const [t, setT] = useState(getTimeLeft);
+  useEffect(() => {
+    const id = setInterval(() => setT(getTimeLeft()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return t;
+}
+
+// ── Calendar helpers ───────────────────────────────────────
+function addToGoogle() {
+  const url =
+    'https://www.google.com/calendar/render?action=TEMPLATE'
+    + '&text=Boda+Alejandro+%26+Diana'
+    + '&dates=20270424T220000Z%2F20270425T080000Z'
+    + '&details=Ceremonia+Religiosa+y+Recepci%C3%B3n'
+    + '&location=Lienzo+Charro+de+Arag%C3%B3n%2C+CDMX';
+  window.open(url, '_blank');
+}
+
+function downloadICS() {
+  const lines = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0',
+    'BEGIN:VEVENT',
+    'DTSTART:20270424T160000',
+    'DTEND:20270425T020000',
+    'SUMMARY:Boda Alejandro & Diana',
+    'LOCATION:Lienzo Charro de Aragón\\, Av. 661 300\\, San Juan de Aragón\\, CDMX',
+    'END:VEVENT', 'END:VCALENDAR',
+  ];
+  const a = Object.assign(document.createElement('a'), {
+    href: URL.createObjectURL(new Blob([lines.join('\r\n')], { type: 'text/calendar' })),
+    download: 'boda-alejandro-diana.ics',
+  });
+  a.click();
+}
+
+// ── Data ───────────────────────────────────────────────────
+const MISA_LINK      = 'https://maps.app.goo.gl/YYMgzXCX4R5BkpSK9';
+const RECEPCION_LINK = 'https://maps.app.goo.gl/4RfwJkoV3HnNcngL6';
+
+const ITINERARY = [
+  { time: '5:00 PM',  event: 'Ceremonia religiosa',    sub: 'Parroquia Señor de la Misericordia' },
+  { time: '6:30 PM',  event: 'Recepción',              sub: 'Lienzo Charro de Aragón'            },
+  { time: '7:00 PM',  event: 'Cocktail de bienvenida', sub: ''                                   },
+  { time: '8:00 PM',  event: 'Cena',                   sub: 'Servida en sus mesas'               },
+  { time: '9:30 PM',  event: 'Primer baile y brindis', sub: ''                                   },
+  { time: '10:00 PM', event: '¡A bailar!',             sub: 'Pista abierta toda la noche'        },
+  { time: '2:00 AM',  event: 'Tornaboda',              sub: 'Para los más fiesteros'             },
+];
+
+const PADRINOS_GRID = [
+  { cat: 'Anillos',  p: ['Lucía Mendoza',   'Carlos Reyes']   },
+  { cat: 'Lazos',    p: ['Patricia Castro',  'Jorge Torres']   },
+  { cat: 'Arras',    p: ['Ana López',        'Miguel Soto']    },
+  { cat: 'Biblia',   p: ['Elena Vargas',     'Antonio Ruiz']   },
+  { cat: 'Ramo',     p: ['María Fernández',  'Pedro Aguilar']  },
+  { cat: 'Pillares', p: ['Rosa Jiménez',     'Eduardo Morán'] },
+];
+
+// ── Shared components ──────────────────────────────────────
+const SectionLabel = ({ children }) => (
+  <p className="inv-section-label">{children}</p>
+);
+
+const fadeUp = {
+  hidden:  { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+};
+
+const Sec = ({ children, className = '' }) => (
+  <motion.section
+    className={`inv-section ${className}`}
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: '-60px' }}
+  >
+    {children}
+  </motion.section>
+);
+
+// ── Main component ─────────────────────────────────────────
 export default function Invitation({ guestName, tickets }) {
-  const mapLink = "https://maps.app.goo.gl/4RfwJkoV3HnNcngL6";
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, staggerChildren: 0.2 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+  const time = useCountdown();
 
   return (
-    <motion.div 
-      className="invitation-container"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
+    <motion.div
+      className="inv"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
     >
-      <div className="scroll-content">
-        
-        {/* Encabezado Principal Integrado con Ilustración */}
-        <motion.div className="header-card" variants={itemVariants}>
-          <div className="illustration-wrapper">
-            <img src={img1} alt="Pareja de novios" className="card-illustration-img" />
-            <div className="fade-overlay-bottom"></div>
+
+      {/* ── HERO ──────────────────────────────── */}
+      <motion.section
+        className="inv-section inv-hero"
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+      >
+        <div className="inv-hero-top">
+          <p className="inv-label-top">NOS CASAMOS</p>
+          <h1 className="inv-script">Diana</h1>
+          <span className="inv-amp-sm">&amp;</span>
+          <h1 className="inv-script">Alejandro</h1>
+        </div>
+
+        <div className="inv-hero-img-wrap">
+          <img src={imgCouple} alt="Diana y Alejandro" className="inv-hero-img" />
+        </div>
+
+        <div className="inv-hero-bottom">
+          <div className="inv-date-block">
+            <div className="inv-date-col">
+              <span className="inv-date-sm">SÁBADO</span>
+              <span className="inv-date-sm">Abril</span>
+            </div>
+            <span className="inv-date-big">24</span>
+            <div className="inv-date-col">
+              <span className="inv-date-sm">2027</span>
+              <span className="inv-date-sm">4:00 PM</span>
+            </div>
           </div>
-          <div className="card-content main-title-content">
-            <h1 className="title big-title">Alejandro &amp; Diana</h1>
-            <p className="body-text" style={{marginTop: '10px'}}>Nos complace de todo corazón invitar a:</p>
-            <h2 className="guest-name">{guestName}</h2>
-            <p className="body-text tickets-info">Pases reservados: {tickets}</p>
+
+          <p className="inv-te-invitamos">— TE INVITAMOS A TI —</p>
+          <h2 className="inv-guest-name">{guestName}</h2>
+          <p className="inv-tickets">
+            {tickets} {tickets === 1 ? 'pase reservado' : 'pases reservados'} con cariño
+          </p>
+          <div className="inv-hearts">♥ &nbsp; ♥</div>
+          <p className="inv-quote">
+            "El amor no consiste en mirarse el uno al otro,<br />
+            sino en mirar juntos en la misma dirección."
+          </p>
+        </div>
+      </motion.section>
+
+      {/* ── COUNTDOWN ─────────────────────────── */}
+      <Sec className="inv-countdown">
+        <SectionLabel>— FALTAN —</SectionLabel>
+        <div className="inv-cd-grid">
+          {[
+            { v: time.days,  l: 'días'  },
+            { v: time.hours, l: 'horas' },
+            { v: time.mins,  l: 'mins'  },
+            { v: time.segs,  l: 'seg'   },
+          ].map(({ v, l }) => (
+            <div key={l} className="inv-cd-item">
+              <span className="inv-cd-num">{v}</span>
+              <span className="inv-cd-label">{l}</span>
+            </div>
+          ))}
+        </div>
+        <div className="inv-cal-btns">
+          <button className="inv-cal-btn" onClick={addToGoogle}>
+            <span role="img" aria-label="calendar">🗓</span> Google Calendar
+          </button>
+          <button className="inv-cal-btn" onClick={downloadICS}>
+            <span role="img" aria-label="apple">🍎</span> Apple / ICS
+          </button>
+        </div>
+      </Sec>
+
+      {/* ── VENUES ────────────────────────────── */}
+      <Sec>
+        <SectionLabel>— DÓNDE TE ESPERAMOS —</SectionLabel>
+        <h2 className="inv-section-title">Misa &amp; Recepción</h2>
+
+        <div className="inv-venue-card">
+          <span className="inv-venue-icon">⛪</span>
+          <p className="inv-venue-type">MISA</p>
+          <p className="inv-venue-name">Parroquia Señor de la Misericordia</p>
+          <p className="inv-venue-addr">
+            Av. Insurgentes Nte, Lindavista<br />
+            Gustavo A. Madero, 07300 CDMX
+          </p>
+          <p className="inv-venue-time">5:00 PM</p>
+          <a href={MISA_LINK} target="_blank" rel="noopener noreferrer" className="inv-venue-btn">
+            <MapPin size={13} /> Cómo llegar
+          </a>
+        </div>
+
+        <div className="inv-venue-card">
+          <span className="inv-venue-icon">🎊</span>
+          <p className="inv-venue-type">RECEPCIÓN</p>
+          <p className="inv-venue-name">Lienzo Charro de Aragón</p>
+          <p className="inv-venue-addr">
+            Av. 661 300, San Juan de Aragón<br />
+            Gustavo A. Madero, 07920 CDMX
+          </p>
+          <p className="inv-venue-time">6:30 PM</p>
+          <a href={RECEPCION_LINK} target="_blank" rel="noopener noreferrer" className="inv-venue-btn">
+            <MapPin size={13} /> Cómo llegar
+          </a>
+        </div>
+      </Sec>
+
+      {/* ── FAMILY / PETS ─────────────────────── */}
+      <Sec className="inv-family-sec">
+        <div className="inv-family-wrap">
+          <img src={imgPets} alt="Nuestra familia" className="inv-family-img" />
+          <div className="inv-family-overlay">
+            <p className="inv-family-quote">Donde hay amor,<br />hay familia</p>
           </div>
-        </motion.div>
+        </div>
+      </Sec>
 
-        {/* Detalles del evento (Con ilustración de recuadro) */}
-        <motion.div className="details-bg-card" variants={itemVariants}>
-          <div className="location-image-wrapper">
-             <img src={imgCuandoDonde} alt="Fondo Cuando y Donde" className="location-bg-image" />
-             <div className="location-overlay-content">
-               <h4 className="heading location-heading">Cuándo &amp; Dónde</h4>
-               
-               <div className="detail-item location-detail-item">
-                 <Calendar className="icon" size={14} />
-                 <p className="body-text location-body-text">Sábado, 24 de Abril 2027</p>
-               </div>
-               
-               <div className="detail-item location-detail-item">
-                 <Clock className="icon" size={14} />
-                 <p className="body-text location-body-text">Ceremonia a las 4:00 PM</p>
-               </div>
+      {/* ── ITINERARY ─────────────────────────── */}
+      <Sec>
+        <SectionLabel>— PROGRAMA —</SectionLabel>
+        <h2 className="inv-section-title">Itinerario del día</h2>
+        <ul className="inv-timeline">
+          {ITINERARY.map(({ time: t, event, sub }) => (
+            <li key={t} className="inv-tl-item">
+              <span className="inv-tl-time">{t}</span>
+              <span className="inv-tl-dot" />
+              <div className="inv-tl-text">
+                <p className="inv-tl-event">{event}</p>
+                {sub && <p className="inv-tl-sub">{sub}</p>}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Sec>
 
-               <div className="detail-item location-item-centered">
-                 <MapPin className="icon" size={14} />
-                 <div className="location-text">
-                   <p className="body-text location-body-text" style={{fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '2px'}}>Lienzo Charro de Aragón</p>
-                   <p className="body-text location-body-text" style={{fontSize: '0.65rem', lineHeight: '1.2'}}>Av. 661 300, San Juan de Aragón<br/>Gustavo A. Madero, 07920 CDMX</p>
-                 </div>
-               </div>
-               
-               <a href={mapLink} target="_blank" rel="noopener noreferrer" className="map-button small-map-button" style={{textDecoration: 'none'}}>
-                 <MapPin size={12} />
-                 Ver Mapa
-               </a>
-             </div>
+      {/* ── DRESS CODE ────────────────────────── */}
+      <Sec className="inv-dresscode">
+        <SectionLabel>— CÓMO VESTIRNOS —</SectionLabel>
+        <h2 className="inv-section-title">Código formal</h2>
+        <p className="inv-body-text">
+          Caballeros: traje oscuro.<br />Damas: vestido largo o de cocktail.
+        </p>
+        <div className="inv-swatch-wrap">
+          <div className="inv-swatch-circle">
+            <span className="inv-swatch-slash">/</span>
           </div>
-        </motion.div>
+          <span className="inv-swatch-label">Blanco</span>
+        </div>
+        <p className="inv-body-text inv-italic-note">
+          Te pedimos reservar el blanco para la novia —<br />
+          ¡cualquier otro color es bienvenido!
+        </p>
+      </Sec>
 
+      {/* ── PADRINOS ──────────────────────────── */}
+      <Sec>
+        <SectionLabel>— CON LA BENDICIÓN DE —</SectionLabel>
+        <h2 className="inv-section-title">Nuestros padrinos</h2>
 
-        <motion.div className="form-section" variants={itemVariants}>
-          <ConfirmationForm guestName={guestName} maxTickets={tickets} />
-        </motion.div>
-        
-        <div className="footer-spacer"></div>
-      </div>
+        <div className="inv-honor-card">
+          <p className="inv-honor-label">PADRINOS DE HONOR</p>
+          <p className="inv-honor-cat">Velación</p>
+          <p className="inv-honor-name">Margarita Hernández</p>
+          <p className="inv-honor-name">Roberto Ortiz</p>
+        </div>
+
+        <div className="inv-pad-grid">
+          {PADRINOS_GRID.map(({ cat, p }) => (
+            <div key={cat} className="inv-pad-item">
+              <p className="inv-pad-cat">{cat}</p>
+              {p.map(n => <p key={n} className="inv-pad-name">{n}</p>)}
+            </div>
+          ))}
+        </div>
+      </Sec>
+
+      {/* ── MESA DE REGALOS ───────────────────── */}
+      <Sec>
+        <SectionLabel>— SI GUSTAS REGALARNOS —</SectionLabel>
+        <h2 className="inv-section-title">Mesa de regalos</h2>
+        <p className="inv-body-text">
+          Tu presencia ya es regalo más que suficiente.<br />Si deseas algo más:
+        </p>
+        <div className="inv-gifts">
+          <a
+            href="https://www.liverpool.com.mx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inv-gift-row"
+          >
+            <div className="inv-gift-info">
+              <span className="inv-gift-store">Liverpool</span>
+              <span className="inv-gift-detail">Mesa N° S1234</span>
+            </div>
+            <span className="inv-gift-arrow">→</span>
+          </a>
+          <a
+            href="https://www.amazon.com.mx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inv-gift-row"
+          >
+            <div className="inv-gift-info">
+              <span className="inv-gift-store">Amazon</span>
+              <span className="inv-gift-detail">Lista A&amp;D 2027</span>
+            </div>
+            <span className="inv-gift-arrow">→</span>
+          </a>
+        </div>
+      </Sec>
+
+      {/* ── NIÑOS ─────────────────────────────── */}
+      <Sec className="inv-kids">
+        <span className="inv-kids-emoji">👶</span>
+        <h3 className="inv-kids-title">Niños bienvenidos</h3>
+        <p className="inv-body-text">
+          Las familias con nuestra alegría.<br />
+          Tendremos un rinconcito para los pequeños.
+        </p>
+      </Sec>
+
+      {/* ── RSVP ──────────────────────────────── */}
+      <Sec className="inv-rsvp-sec">
+        <ConfirmationForm guestName={guestName} maxTickets={tickets} />
+      </Sec>
+
+      {/* ── CONTACTO ──────────────────────────── */}
+      <Sec>
+        <SectionLabel>— CUALQUIER DUDA —</SectionLabel>
+        <h2 className="inv-section-title">Contacto</h2>
+        <div className="inv-contacts">
+          <a href="tel:+5215512345678" className="inv-contact-row">
+            <div className="inv-contact-icon"><Phone size={16} /></div>
+            <div className="inv-contact-info">
+              <span className="inv-contact-name">Sofía</span>
+              <span className="inv-contact-role">Hermana de Diana — Confirmaciones</span>
+            </div>
+            <span className="inv-contact-phone">+52 55 1234 5678</span>
+          </a>
+          <a href="tel:+5215538765432" className="inv-contact-row">
+            <div className="inv-contact-icon"><Phone size={16} /></div>
+            <div className="inv-contact-info">
+              <span className="inv-contact-name">Ricardo</span>
+              <span className="inv-contact-role">Hermano de Alejandro — Logística</span>
+            </div>
+            <span className="inv-contact-phone">+52 55 3876 5432</span>
+          </a>
+        </div>
+      </Sec>
+
+      {/* ── FOOTER ────────────────────────────── */}
+      <footer className="inv-footer">
+        <p className="inv-footer-mono">A &amp; D</p>
+        <p className="inv-footer-tag">#AlejandroYDianaSeCasan</p>
+      </footer>
+
     </motion.div>
   );
 }

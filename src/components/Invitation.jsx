@@ -140,14 +140,14 @@ export default function Invitation({ guestName, tickets }) {
         <div className="inv-hero-bottom">
           <div className="inv-date-block">
             <div className="inv-date-col">
-              <span className="inv-date-sm">SÁBADO</span>
+              <span className="inv-tickets">SÁBADO</span>
               <span className="inv-date-sm inv-date-abril">Abril</span>
             </div>
             <div className="inv-date-divider" />
             <span className="inv-date-big">24</span>
             <div className="inv-date-divider" />
             <div className="inv-date-col">
-              <span className="inv-date-sm">5:00 PM</span>
+              <span className="inv-tickets">5:00 PM</span>
               <span className="inv-date-sm">2027</span>
             </div>
           </div>
@@ -183,10 +183,10 @@ export default function Invitation({ guestName, tickets }) {
         </div>
         <div className="inv-cal-btns">
           <button className="inv-cal-btn" onClick={addToGoogle}>
-            🗓 Google Calendar
+            Google Calendar
           </button>
           <button className="inv-cal-btn inv-cal-btn-outline" onClick={downloadICS}>
-            🍎 Apple / .ICS
+            Apple / .ICS
           </button>
         </div>
       </Sec>

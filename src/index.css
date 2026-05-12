@@ -1,16 +1,18 @@
 :root {
-  --primary-color: #8ab196;
-  --primary-dark: #6b8f75;
-  --background-color: #fdfaf6;
-  --text-main: #3b4440;
-  --text-light: #7a827e;
-  --accent-color: #dcb88e;
-  --navy: #2d3a4a;
-  --rose: #c9878e;
+  --primary-color: #A8BAA1;
+  --primary-dark: #A86473;
+  --background-color: #F6EFE7;
+  --surface-color: #FBF6F0;
+  --text-main: #3A3A4A;
+  --text-light: #7A7A8C;
+  --accent-color: #C9A25E;
+  --navy: #3E5170;
+  --blue: #5B6F8E;
+  --rose: #C98A98;
 
-  --font-names:   'Great Vibes', cursive;
-  --font-heading: 'Playfair Display', serif;
-  --font-body:    'Lato', sans-serif;
+  --font-names:   'Pinyon Script', cursive;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body:    'Karla', sans-serif;
 }
 
 * {
@@ -23,7 +25,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-body);
-  background-color: #e8ebe6;
+  background-color: #EDE5DC;
   color: var(--text-main);
   display: flex;
   justify-content: center;

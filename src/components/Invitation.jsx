@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import ConfirmationForm from './ConfirmationForm';
 import './Invitation.css';
 
 import imgCouple from '../assets/media__1775949218809.jpg';
-import imgPets   from '../assets/media__1775949218836.jpg';
+import imgFamily from '../assets/cuando-donde-bg.png';
 
 // ── Countdown ──────────────────────────────────────────────
 const WEDDING_DATE = new Date('2027-04-24T16:00:00');
@@ -125,7 +125,11 @@ export default function Invitation({ guestName, tickets }) {
         <div className="inv-hero-top">
           <p className="inv-label-top">NOS CASAMOS</p>
           <h1 className="inv-script">Diana</h1>
-          <span className="inv-amp-sm">&amp;</span>
+          <div className="inv-amp-row">
+            <span className="inv-amp-line" />
+            <span className="inv-amp-sm">&amp;</span>
+            <span className="inv-amp-line" />
+          </div>
           <h1 className="inv-script">Alejandro</h1>
         </div>
 
@@ -137,12 +141,14 @@ export default function Invitation({ guestName, tickets }) {
           <div className="inv-date-block">
             <div className="inv-date-col">
               <span className="inv-date-sm">SÁBADO</span>
-              <span className="inv-date-sm">Abril</span>
+              <span className="inv-date-sm inv-date-abril">Abril</span>
             </div>
+            <div className="inv-date-divider" />
             <span className="inv-date-big">24</span>
+            <div className="inv-date-divider" />
             <div className="inv-date-col">
+              <span className="inv-date-sm">5:00 PM</span>
               <span className="inv-date-sm">2027</span>
-              <span className="inv-date-sm">4:00 PM</span>
             </div>
           </div>
 
@@ -151,10 +157,10 @@ export default function Invitation({ guestName, tickets }) {
           <p className="inv-tickets">
             {tickets} {tickets === 1 ? 'pase reservado' : 'pases reservados'} con cariño
           </p>
-          <div className="inv-hearts">♥ &nbsp; ♥</div>
+          <span className="inv-open-quote">&ldquo;</span>
           <p className="inv-quote">
-            "El amor no consiste en mirarse el uno al otro,<br />
-            sino en mirar juntos en la misma dirección."
+            El amor no consiste en mirarse el uno al otro,<br />
+            sino en mirar juntos en la misma dirección.
           </p>
         </div>
       </motion.section>
@@ -177,10 +183,10 @@ export default function Invitation({ guestName, tickets }) {
         </div>
         <div className="inv-cal-btns">
           <button className="inv-cal-btn" onClick={addToGoogle}>
-            <span role="img" aria-label="calendar">🗓</span> Google Calendar
+            🗓 Google Calendar
           </button>
-          <button className="inv-cal-btn" onClick={downloadICS}>
-            <span role="img" aria-label="apple">🍎</span> Apple / ICS
+          <button className="inv-cal-btn inv-cal-btn-outline" onClick={downloadICS}>
+            🍎 Apple / .ICS
           </button>
         </div>
       </Sec>
@@ -191,41 +197,54 @@ export default function Invitation({ guestName, tickets }) {
         <h2 className="inv-section-title">Misa &amp; Recepción</h2>
 
         <div className="inv-venue-card">
-          <span className="inv-venue-icon">⛪</span>
-          <p className="inv-venue-type">MISA</p>
+          <div className="inv-venue-header">
+            <span className="inv-venue-icon">⛪</span>
+            <p className="inv-venue-type">MISA</p>
+          </div>
           <p className="inv-venue-name">Parroquia Señor de la Misericordia</p>
           <p className="inv-venue-addr">
             Av. Insurgentes Nte, Lindavista<br />
             Gustavo A. Madero, 07300 CDMX
           </p>
           <p className="inv-venue-time">5:00 PM</p>
-          <a href={MISA_LINK} target="_blank" rel="noopener noreferrer" className="inv-venue-btn">
-            <MapPin size={13} /> Cómo llegar
-          </a>
+          <div className="inv-venue-map-wrap">
+            <iframe
+              src="https://maps.google.com/maps?q=Parroquia+Se%C3%B1or+de+la+Misericordia+Lindavista+CDMX&output=embed&hl=es"
+              className="inv-venue-map"
+              loading="lazy"
+              title="Mapa Parroquia"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
 
         <div className="inv-venue-card">
-          <span className="inv-venue-icon">🎊</span>
-          <p className="inv-venue-type">RECEPCIÓN</p>
+          <div className="inv-venue-header">
+            <span className="inv-venue-icon">🥂</span>
+            <p className="inv-venue-type">RECEPCIÓN</p>
+          </div>
           <p className="inv-venue-name">Lienzo Charro de Aragón</p>
           <p className="inv-venue-addr">
             Av. 661 300, San Juan de Aragón<br />
             Gustavo A. Madero, 07920 CDMX
           </p>
           <p className="inv-venue-time">6:30 PM</p>
-          <a href={RECEPCION_LINK} target="_blank" rel="noopener noreferrer" className="inv-venue-btn">
-            <MapPin size={13} /> Cómo llegar
-          </a>
+          <div className="inv-venue-map-wrap">
+            <iframe
+              src="https://maps.google.com/maps?q=Lienzo+Charro+de+Arag%C3%B3n+San+Juan+de+Arag%C3%B3n+CDMX&output=embed&hl=es"
+              className="inv-venue-map"
+              loading="lazy"
+              title="Mapa Recepción"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </Sec>
 
       {/* ── FAMILY / PETS ─────────────────────── */}
       <Sec className="inv-family-sec">
         <div className="inv-family-wrap">
-          <img src={imgPets} alt="Nuestra familia" className="inv-family-img" />
-          <div className="inv-family-overlay">
-            <p className="inv-family-quote">Donde hay amor,<br />hay familia</p>
-          </div>
+          <img src={imgFamily} alt="Ramón & cia." className="inv-family-img" />
         </div>
       </Sec>
 

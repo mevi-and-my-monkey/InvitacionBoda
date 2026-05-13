@@ -135,7 +135,7 @@ export default function Invitation({ guestName, tickets }) {
       transition={{ duration: 0.6 }}
     >
       {/* ── AUDIO ─────────────────────────────── */}
-      <audio ref={audioRef} src="/music/viento.mp3" preload="auto" />
+      <audio ref={audioRef} src="/music/marte.mp3" preload="auto" />
 
       {/* ── MUSIC TOGGLE ──────────────────────── */}
       <button className="inv-music-btn" onClick={toggleMusic} aria-label="Música">

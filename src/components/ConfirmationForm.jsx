@@ -7,7 +7,6 @@ import imgFrame from '../assets/confirmar-asistencia-bg.png';
 export default function ConfirmationForm({ guestName, maxTickets }) {
   const [attending, setAttending] = useState(null); // null | true | false
   const [count, setCount]         = useState(maxTickets);
-  const [note, setNote]           = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
@@ -22,7 +21,7 @@ export default function ConfirmationForm({ guestName, maxTickets }) {
       });
     }
     setSubmitted(true);
-    console.log({ guestName, attending, count: attending ? count : 0, note });
+    console.log({ guestName, attending, count: attending ? count : 0 });
   };
 
   return (
@@ -84,37 +83,23 @@ export default function ConfirmationForm({ guestName, maxTickets }) {
                 </div>
               </div>
 
-              {/* Counter — only when attending */}
+              {/* Selector — only when attending */}
               {attending === true && (
                 <div className="cf-field">
-                  <label className="cf-label">PERSONAS CONFIRMADAS</label>
-                  <div className="cf-counter">
-                    <button
-                      type="button"
-                      className="cf-counter-btn"
-                      onClick={() => setCount(c => Math.max(1, c - 1))}
-                    >−</button>
-                    <span className="cf-counter-val">{count}</span>
-                    <button
-                      type="button"
-                      className="cf-counter-btn"
-                      onClick={() => setCount(c => Math.min(maxTickets, c + 1))}
-                    >+</button>
-                  </div>
+                  <label className="cf-label">¿CUÁNTOS ASISTIRÁN?</label>
+                  <select
+                    className="cf-select"
+                    value={count}
+                    onChange={e => setCount(parseInt(e.target.value, 10))}
+                  >
+                    {Array.from({ length: maxTickets }, (_, i) => i + 1).map(n => (
+                      <option key={n} value={n}>
+                        {n} {n === 1 ? 'persona' : 'personas'}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               )}
-
-              {/* Nota */}
-              <div className="cf-field">
-                <label className="cf-label">NOTA (OPCIONAL)</label>
-                <textarea
-                  className="cf-textarea"
-                  placeholder="Restricciones alimentarias..."
-                  value={note}
-                  onChange={e => setNote(e.target.value)}
-                  rows={2}
-                />
-              </div>
 
               <button
                 type="submit"

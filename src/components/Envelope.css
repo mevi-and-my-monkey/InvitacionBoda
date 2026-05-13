@@ -157,12 +157,17 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 10px rgba(58,58,74,0.07);
+  overflow: hidden;
 }
 
 .env-monogram {
   font-family: var(--font-names);
   font-size: 1.7rem;
   color: var(--accent-color);
+  text-align: center;
+  width: 100%;
+  display: block;
+  line-height: 1;
 }
 
 /* Flap — triangle pointing down */

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Phone } from 'lucide-react';
+import { Phone, Music, VolumeX } from 'lucide-react';
 import ConfirmationForm from './ConfirmationForm';
 import './Invitation.css';
 
@@ -64,8 +64,8 @@ const RECEPCION_LINK = 'https://maps.app.goo.gl/4RfwJkoV3HnNcngL6';
 
 const ITINERARY = [
   { time: '5:00 PM',  event: 'Ceremonia religiosa',    sub: 'Parroquia Señor de la Misericordia' },
+  { time: '6:00 PM',  event: 'Sesión de fotos',        sub: 'Cocktail para los invitados'        },
   { time: '6:30 PM',  event: 'Recepción',              sub: 'Lienzo Charro de Aragón'            },
-  { time: '7:00 PM',  event: 'Cocktail de bienvenida', sub: ''                                   },
   { time: '8:00 PM',  event: 'Cena',                   sub: 'Servida en sus mesas'               },
   { time: '9:30 PM',  event: 'Primer baile y brindis', sub: ''                                   },
   { time: '10:00 PM', event: '¡A bailar!',             sub: 'Pista abierta toda la noche'        },
@@ -106,6 +106,26 @@ const Sec = ({ children, className = '' }) => (
 // ── Main component ─────────────────────────────────────────
 export default function Invitation({ guestName, tickets }) {
   const time = useCountdown();
+  const audioRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0.35;
+    audio.loop = true;
+    const play = audio.play();
+    if (play !== undefined) {
+      play.then(() => setPlaying(true)).catch(() => {});
+    }
+  }, []);
+
+  const toggleMusic = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (playing) { audio.pause(); setPlaying(false); }
+    else { audio.play(); setPlaying(true); }
+  };
 
   return (
     <motion.div
@@ -114,6 +134,18 @@ export default function Invitation({ guestName, tickets }) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
+      {/* ── AUDIO ─────────────────────────────── */}
+      <audio ref={audioRef} src="/music/viento.mp3" preload="auto" />
+
+      {/* ── MUSIC TOGGLE ──────────────────────── */}
+      <button className="inv-music-btn" onClick={toggleMusic} aria-label="Música">
+        {playing ? <Music size={16} /> : <VolumeX size={16} />}
+      </button>
+
+      {/* ── FLOATING PETALS ───────────────────── */}
+      {[...Array(10)].map((_, i) => (
+        <span key={i} className={`inv-petal inv-petal-${i}`} aria-hidden="true" />
+      ))}
 
       {/* ── HERO ──────────────────────────────── */}
       <motion.section
@@ -245,6 +277,11 @@ export default function Invitation({ guestName, tickets }) {
       <Sec className="inv-family-sec">
         <div className="inv-family-wrap">
           <img src={imgFamily} alt="Ramón & cia." className="inv-family-img" />
+          <div className="inv-family-overlay">
+            <p className="inv-family-label">NUESTRA FAMILIA</p>
+            <p className="inv-family-quote">Ramón &amp; cia.</p>
+            <p className="inv-family-tagline">Donde hay amor, hay familia.</p>
+          </div>
         </div>
       </Sec>
 
@@ -321,6 +358,7 @@ export default function Invitation({ guestName, tickets }) {
             rel="noopener noreferrer"
             className="inv-gift-row"
           >
+            <span className="inv-gift-icon">🎁</span>
             <div className="inv-gift-info">
               <span className="inv-gift-store">Liverpool</span>
               <span className="inv-gift-detail">Mesa N° S1234</span>
@@ -333,6 +371,7 @@ export default function Invitation({ guestName, tickets }) {
             rel="noopener noreferrer"
             className="inv-gift-row"
           >
+            <span className="inv-gift-icon">🎁</span>
             <div className="inv-gift-info">
               <span className="inv-gift-store">Amazon</span>
               <span className="inv-gift-detail">Lista A&amp;D 2027</span>
@@ -344,12 +383,15 @@ export default function Invitation({ guestName, tickets }) {
 
       {/* ── NIÑOS ─────────────────────────────── */}
       <Sec className="inv-kids">
-        <span className="inv-kids-emoji">👶</span>
-        <h3 className="inv-kids-title">Niños bienvenidos</h3>
-        <p className="inv-body-text">
-          Las familias con nuestra alegría.<br />
-          Tendremos un rinconcito para los pequeños.
-        </p>
+        <div className="inv-kids-inner">
+          <span className="inv-kids-emoji">👶</span>
+          <div className="inv-kids-text">
+            <h3 className="inv-kids-title">Niños bienvenidos</h3>
+            <p className="inv-body-text">
+              Las familias son nuestra alegría. Tendremos un rinconcito para los pequeños.
+            </p>
+          </div>
+        </div>
       </Sec>
 
       {/* ── RSVP ──────────────────────────────── */}
@@ -383,8 +425,8 @@ export default function Invitation({ guestName, tickets }) {
 
       {/* ── FOOTER ────────────────────────────── */}
       <footer className="inv-footer">
-        <p className="inv-footer-mono">A &amp; D</p>
-        <p className="inv-footer-tag">#AlejandroYDianaSeCasan</p>
+        <p className="inv-footer-mono">D&amp;A</p>
+        <p className="inv-footer-tag">#DianaYAlejandroSeCasan</p>
       </footer>
 
     </motion.div>

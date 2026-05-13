@@ -49,18 +49,16 @@
 /* ─── Form overlay — sits inside the golden ornate frame ── */
 .cf-overlay {
   position: absolute;
-  /* Golden frame area: roughly 10%–72% vertically, 10%–90% horizontally */
-  top: 10%;
-  left: 10%;
-  right: 10%;
-  bottom: 27%;
+  top: 9%;
+  left: 17%;
+  right: 17%;
+  bottom: 34%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  padding: 6px 10px;
+  padding: 0 6px;
   overflow-y: auto;
-  /* Hide scrollbar but allow scrolling if content overflows */
   scrollbar-width: none;
 }
 .cf-overlay::-webkit-scrollbar { display: none; }
@@ -87,7 +85,7 @@
 .cf-form {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 7px;
   width: 100%;
 }
 
@@ -133,7 +131,8 @@
 /* ─── Toggle buttons ────────────────────────────────────── */
 .cf-toggle {
   display: flex;
-  gap: 6px;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .cf-toggle-btn {
@@ -201,6 +200,27 @@
   color: var(--text-main);
   min-width: 28px;
   text-align: center;
+}
+
+/* ─── Select ────────────────────────────────────────────── */
+.cf-select {
+  padding: 7px 10px;
+  border: 1.5px solid #d2ddd4;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  background: white;
+  color: var(--text-main);
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  appearance: auto;
+}
+
+.cf-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 /* ─── Textarea ──────────────────────────────────────────── */

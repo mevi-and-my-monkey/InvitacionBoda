@@ -4,14 +4,31 @@ import { CheckCircle2 } from 'lucide-react';
 import './ConfirmationForm.css';
 import imgFrame from '../assets/confirmar-asistencia-bg.png';
 
+const SHEETS_URL = import.meta.env.VITE_SHEETS_URL
+  || 'https://script.google.com/macros/s/AKfycbxGoSedPPr-f_A6mIwtrox3zpU0FDKCGJtYKjnX5OJFARD_EqMUBIDhotHh9cIgEFY/exec';
+
+function saveToSheets(guestName, attending, count) {
+  const url = new URL(SHEETS_URL);
+  url.searchParams.set('nombre', guestName);
+  url.searchParams.set('asistencia', attending ? 'Sí' : 'No');
+  url.searchParams.set('personas', attending ? count : 0);
+  url.searchParams.set('fecha', new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' }));
+  // Image request bypasses CORS restrictions for simple GET calls to Apps Script
+  new Image().src = url.toString();
+  console.log('[RSVP] enviando a sheets:', url.toString());
+}
+
 export default function ConfirmationForm({ guestName, maxTickets }) {
   const [attending, setAttending] = useState(null); // null | true | false
   const [count, setCount]         = useState(maxTickets);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending]     = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (attending === null) return;
+    if (attending === null || sending) return;
+    setSending(true);
+    saveToSheets(guestName, attending, attending ? count : 0);
     if (attending) {
       confetti({
         particleCount: 150,
@@ -20,8 +37,7 @@ export default function ConfirmationForm({ guestName, maxTickets }) {
         colors: ['#8ab196', '#dcb88e', '#f5c6cb'],
       });
     }
-    setSubmitted(true);
-    console.log({ guestName, attending, count: attending ? count : 0 });
+    setTimeout(() => { setSending(false); setSubmitted(true); }, 800);
   };
 
   return (
@@ -104,9 +120,9 @@ export default function ConfirmationForm({ guestName, maxTickets }) {
               <button
                 type="submit"
                 className="cf-submit"
-                disabled={attending === null}
+                disabled={attending === null || sending}
               >
-                Confirmar
+                {sending ? 'Enviando…' : 'Confirmar'}
               </button>
 
             </form>

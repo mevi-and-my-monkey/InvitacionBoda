@@ -8,7 +8,7 @@ export default function Envelope({ onOpen }) {
   const handleOpen = () => {
     if (phase !== 'idle') return;
     setPhase('opening');
-    setTimeout(onOpen, 1400);
+    setTimeout(onOpen, 900);
   };
 
   return (
@@ -23,9 +23,9 @@ export default function Envelope({ onOpen }) {
 
       <motion.div
         className="env-wrap"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: 'easeOut' }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
       >
         <p className="env-supra">NOS CASAMOS</p>
 

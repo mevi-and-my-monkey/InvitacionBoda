@@ -73,12 +73,12 @@ const ITINERARY = [
 ];
 
 const PADRINOS_GRID = [
-  { cat: 'Anillos',  p: ['Lucía Mendoza',   'Carlos Reyes']   },
-  { cat: 'Lazos',    p: ['Patricia Castro',  'Jorge Torres']   },
-  { cat: 'Arras',    p: ['Ana López',        'Miguel Soto']    },
-  { cat: 'Biblia',   p: ['Elena Vargas',     'Antonio Ruiz']   },
-  { cat: 'Ramo',     p: ['María Fernández',  'Pedro Aguilar']  },
-  { cat: 'Pillares', p: ['Rosa Jiménez',     'Eduardo Morán'] },
+  { cat: 'Anillos',  p: ['Gris',   ' ']   },
+  { cat: 'Lazos',    p: ['Guadalupe Mendez',  'Victor Romero']   },
+  { cat: 'Arras',    p: ['Ernesto Villafuerte',        'Evelia']    },
+  { cat: 'Biblia',   p: ['Manuela Torres',     'Eustaquio']   },
+  { cat: 'Ramo',     p: ['Diana Mejia',  ' ']  },
+  { cat: 'Medallas', p: ['Patricia Garcia',     ' '] },
 ];
 
 // ── Shared components ──────────────────────────────────────
@@ -135,7 +135,7 @@ export default function Invitation({ guestName, tickets }) {
       transition={{ duration: 0.6 }}
     >
       {/* ── AUDIO ─────────────────────────────── */}
-      <audio ref={audioRef} src="/music/viento.mp3" preload="auto" />
+      <audio ref={audioRef} src="/music/marte.mp3" preload="auto" />
 
       {/* ── MUSIC TOGGLE ──────────────────────── */}
       <button className="inv-music-btn" onClick={toggleMusic} aria-label="Música">
@@ -278,9 +278,8 @@ export default function Invitation({ guestName, tickets }) {
         <div className="inv-family-wrap">
           <img src={imgFamily} alt="Ramón & cia." className="inv-family-img" />
           <div className="inv-family-overlay">
-            <p className="inv-family-label">NUESTRA FAMILIA</p>
-            <p className="inv-family-quote">Ramón &amp; cia.</p>
-            <p className="inv-family-tagline">Donde hay amor, hay familia.</p>
+            <p className="inv-family-label">DONDE HAY AMOR,</p>
+            <p className="inv-family-label">HAY FAMILIA.</p>
           </div>
         </div>
       </Sec>
@@ -330,8 +329,8 @@ export default function Invitation({ guestName, tickets }) {
         <div className="inv-honor-card">
           <p className="inv-honor-label">PADRINOS DE HONOR</p>
           <p className="inv-honor-cat">Velación</p>
-          <p className="inv-honor-name">Margarita Hernández</p>
-          <p className="inv-honor-name">Roberto Ortiz</p>
+          <p className="inv-honor-name">Mayra Garcia</p>
+          <p className="inv-honor-name">Felix Parra</p>
         </div>
 
         <div className="inv-pad-grid">
@@ -405,20 +404,20 @@ export default function Invitation({ guestName, tickets }) {
         <h2 className="inv-section-title">Contacto</h2>
         <div className="inv-contacts">
           <a href="tel:+5215512345678" className="inv-contact-row">
-            <div className="inv-contact-icon"><Phone size={16} /></div>
+            <div className="inv-contact-icon"><Phone size={20} /></div>
             <div className="inv-contact-info">
-              <span className="inv-contact-name">Sofía</span>
-              <span className="inv-contact-role">Hermana de Diana — Confirmaciones</span>
+              <span className="inv-contact-name">Lupita</span>
+              <span className="inv-contact-role">Mamá de Diana</span>
             </div>
-            <span className="inv-contact-phone">+52 55 1234 5678</span>
+            <span className="inv-contact-phone">+52 55 2190 6519</span>
           </a>
           <a href="tel:+5215538765432" className="inv-contact-row">
-            <div className="inv-contact-icon"><Phone size={16} /></div>
+            <div className="inv-contact-icon"><Phone size={20} /></div>
             <div className="inv-contact-info">
-              <span className="inv-contact-name">Ricardo</span>
-              <span className="inv-contact-role">Hermano de Alejandro — Logística</span>
+              <span className="inv-contact-name">Diana</span>
+              <span className="inv-contact-role">Hermana de Alejandro</span>
             </div>
-            <span className="inv-contact-phone">+52 55 3876 5432</span>
+            <span className="inv-contact-phone">+52 322 275 7595</span>
           </a>
         </div>
       </Sec>

@@ -53,7 +53,7 @@ export default function ConfirmationForm({ guestName, maxTickets }) {
 
               {/* Nombre */}
               <div className="cf-field">
-                <label className="cf-label">TU NOMBRE</label>
+                <label className="cf-label">INVITAD@S</label>
                 <input
                   type="text"
                   value={guestName}

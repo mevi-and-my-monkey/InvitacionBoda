@@ -5,7 +5,7 @@
 
 .cf-deadline {
   font-family: var(--font-heading);
-  font-size: 0.77rem;
+  font-size: 0.97rem;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   font-weight: bold;
@@ -98,7 +98,7 @@
 
 .cf-label {
   font-family: var(--font-heading);
-  font-size: 0.52rem;
+  font-size: 0.72rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--primary-dark);

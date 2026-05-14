@@ -51,10 +51,11 @@
 
 .env-supra {
   font-family: var(--font-heading);
-  font-size: 0.65rem;
-  letter-spacing: 5px;
+  font-size: 1.25rem;
+  letter-spacing: .5px;
+  font-weight: bold;
   text-transform: uppercase;
-  color: var(--text-light);
+  color: var(--rose);
   margin: 0;
 }
 
@@ -83,8 +84,9 @@
 
 .env-date-label {
   font-family: var(--font-heading);
-  font-size: 0.78rem;
-  color: var(--text-light);
+  font-size: 1.28rem;
+  font-weight: bold;
+  color: var(--rose);
   letter-spacing: 1px;
   margin: 0;
 }
@@ -221,7 +223,8 @@
 .env-hint {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.82rem;
-  color: var(--text-light);
+  font-size: 1.02rem;
+  font-weight: bold;
+  color: var(--rose);
   margin: 0;
 }

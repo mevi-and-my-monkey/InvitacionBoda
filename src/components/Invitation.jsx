@@ -73,7 +73,7 @@ const ITINERARY = [
 ];
 
 const PADRINOS_GRID = [
-  { cat: 'Anillos',  p: ['Gris',   ' ']   },
+  { cat: 'Anillos',  p: ['Gris Torres',   ' ']   },
   { cat: 'Lazos',    p: ['Guadalupe Mendez',  'Victor Romero']   },
   { cat: 'Arras',    p: ['Ernesto Villafuerte',        'Evelia']    },
   { cat: 'Biblia',   p: ['Manuela Torres',     'Eustaquio']   },

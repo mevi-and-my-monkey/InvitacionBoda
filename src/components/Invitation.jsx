@@ -4,8 +4,8 @@ import { Phone, Music, VolumeX } from 'lucide-react';
 import ConfirmationForm from './ConfirmationForm';
 import './Invitation.css';
 
-import imgCouple from '../assets/media__1775949218809.jpg';
-import imgFamily from '../assets/cuando-donde-bg.png';
+import imgCouple from '../assets/principal.jpeg';
+import imgFamily from '../assets/cuando-donde.jpeg';
 
 // ── Countdown ──────────────────────────────────────────────
 const WEDDING_DATE = new Date('2027-04-24T16:00:00');

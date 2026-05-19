@@ -5,7 +5,7 @@
 
 .cf-deadline {
   font-family: var(--font-heading);
-  font-size: 0.97rem;
+  font-size: 1.07rem;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   font-weight: bold;
@@ -23,14 +23,14 @@
 
 .cf-title {
   font-family: var(--font-names);
-  font-size: 3.6rem;
+  font-size: 3.7rem;
   color: #f5e8d0;
   margin: 0 0 6px;
   line-height: 1;
 }
 
 .cf-subtitle {
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   color: rgba(255,255,255,0.65);
   margin: 0;
 }
@@ -76,7 +76,7 @@
 
 .cf-success-msg {
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-main);
   margin: 0;
   line-height: 1.45;
@@ -98,7 +98,7 @@
 
 .cf-label {
   font-family: var(--font-heading);
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--primary-dark);
@@ -109,7 +109,7 @@
   border: 1.5px solid #d2ddd4;
   border-radius: 8px;
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   background: white;
   color: var(--text-main);
   width: 100%;
@@ -142,7 +142,7 @@
   border: 1.5px solid #d2ddd4;
   border-radius: 8px;
   font-family: var(--font-body);
-  font-size: 0.76rem;
+  font-size: 0.86rem;
   background: white;
   color: var(--text-light);
   cursor: pointer;
@@ -179,7 +179,7 @@
   border: 1.5px solid #d2ddd4;
   background: white;
   color: var(--text-main);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -197,7 +197,7 @@
 
 .cf-counter-val {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--text-main);
   min-width: 28px;
   text-align: center;
@@ -209,7 +209,7 @@
   border: 1.5px solid #d2ddd4;
   border-radius: 8px;
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   background: white;
   color: var(--text-main);
   width: 100%;
@@ -230,7 +230,7 @@
   border: 1.5px solid #d2ddd4;
   border-radius: 8px;
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   background: white;
   color: var(--text-main);
   resize: none;
@@ -253,7 +253,7 @@
   padding: 10px 16px;
   border-radius: 8px;
   font-family: var(--font-heading);
-  font-size: 0.88rem;
+  font-size: 0.98rem;
   cursor: pointer;
   width: 100%;
   box-sizing: border-box;

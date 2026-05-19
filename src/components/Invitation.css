@@ -77,7 +77,7 @@
 /* ─── Section label & title ─────────────────────────────── */
 .inv-section-label {
   font-family: var(--font-heading);
-  font-size: 1.28rem;
+  font-size: 1.38rem;
   letter-spacing: 3.5px;
   font-weight: 700;
   text-transform: uppercase;
@@ -99,7 +99,7 @@
 
 .inv-section-title {
   font-family: var(--font-names);
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 400;
   color: var(--navy);
   text-align: center;
@@ -109,7 +109,7 @@
 
 /* ─── Body text / shared ────────────────────────────────── */
 .inv-body-text {
-  font-size: 0.88rem;
+  font-size: 0.98rem;
   line-height: 1.65;
   color: var(--text-light);
   text-align: center;
@@ -118,7 +118,7 @@
 
 .inv-italic-note {
   font-style: italic;
-  font-size: 0.92rem;
+  font-size: 1.02rem;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -141,7 +141,7 @@
 
 .inv-label-top {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   letter-spacing: 1px;
   font-weight: bold;
   text-transform: uppercase;
@@ -151,7 +151,7 @@
 
 .inv-script {
   font-family: var(--font-names);
-  font-size: 4.2rem;
+  font-size: 4.3rem;
   font-weight: 400;
   color: var(--navy);
   line-height: 1.05;
@@ -174,7 +174,7 @@
 
 .inv-amp-sm {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: var(--rose);
   margin: 0;
 }
@@ -222,7 +222,7 @@
 
 .inv-date-sm {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--navy);
@@ -243,7 +243,7 @@
 
 .inv-date-big {
   font-family: var(--font-heading);
-  font-size: 5.5rem;
+  font-size: 5.6rem;
   font-weight: 700;
   color: var(--navy);
   line-height: 1;
@@ -251,7 +251,7 @@
 
 .inv-te-invitamos {
   font-family: var(--font-heading);
-  font-size: 1.38rem;
+  font-size: 1.48rem;
   letter-spacing: 2px;
   font-weight: 800;
   text-transform: uppercase;
@@ -261,7 +261,7 @@
 
 .inv-guest-name {
   font-family: var(--font-names);
-  font-size: 3.2rem;
+  font-size: 3.3rem;
   font-weight: 400;
   color: var(--primary-dark);
   margin: 0;
@@ -269,14 +269,14 @@
 }
 
 .inv-tickets {
-  font-size: 1.12rem;
+  font-size: 1.22rem;
   color: var(--text-light);
   margin: 0;
 }
 
 .inv-open-quote {
   font-family: var(--font-heading);
-  font-size: 3rem;
+  font-size: 3.1rem;
   color: var(--rose);
   line-height: 0.7;
   display: block;
@@ -285,7 +285,7 @@
 
 .inv-quote {
   font-style: italic;
-  font-size: 1.02rem;
+  font-size: 1.12rem;
   color: var(--text-light);
   line-height: 1.25;
   font-weight: 800;
@@ -328,7 +328,7 @@
 
 .inv-cd-num {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 700;
   color: var(--text-main);
   line-height: 1;
@@ -337,7 +337,7 @@
 }
 
 .inv-cd-label {
-  font-size: 0.58rem;
+  font-size: 0.68rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-light);
@@ -359,7 +359,7 @@
   padding: 12px 14px;
   border-radius: 999px;
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   border: 1.5px solid var(--navy);
@@ -415,11 +415,11 @@
 }
 
 .inv-venue-icon {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .inv-venue-type {
-  font-size: 0.90rem;
+  font-size: 1rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
@@ -429,7 +429,7 @@
 
 .inv-venue-name {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-main);
   margin: 0;
@@ -437,7 +437,7 @@
 }
 
 .inv-venue-addr {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   color: var(--text-light);
   line-height: 1.55;
   margin: 0;
@@ -445,7 +445,7 @@
 
 .inv-venue-time {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-style: italic;
   font-weight: 600;
   color: var(--primary-dark);
@@ -502,7 +502,7 @@
 
 .inv-family-label {
   font-family: var(--font-heading);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   letter-spacing: 3px;
   font-weight: 700;
   text-transform: uppercase;
@@ -513,7 +513,7 @@
 
 .inv-family-quote {
   font-family: var(--font-names);
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   color: var(--navy);
   line-height: 1.15;
   text-align: center;
@@ -522,7 +522,7 @@
 
 .inv-family-tagline {
   font-family: var(--font-heading);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-style: italic;
   color: var(--text-light);
   text-align: center;
@@ -561,7 +561,7 @@
 
 .inv-tl-time {
   font-family: var(--font-heading);
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   color: var(--accent-color);
   min-width: 66px;
   text-align: right;
@@ -589,14 +589,14 @@
 
 .inv-tl-event {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-main);
   margin: 0;
 }
 
 .inv-tl-sub {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: var(--text-light);
   margin: 0;
 }
@@ -629,13 +629,13 @@
 }
 
 .inv-swatch-slash {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   color: #ccc5bc;
 }
 
 .inv-swatch-label {
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-light);
 }
 
@@ -653,7 +653,7 @@
 
 .inv-honor-label {
   font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 600;
@@ -663,7 +663,7 @@
 
 .inv-honor-cat {
   font-family: var(--font-names);
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   color: var(--accent-color);
   margin: 0 0 14px;
   line-height: 1;
@@ -671,7 +671,7 @@
 
 .inv-honor-name {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: white;
   margin: 4px 0;
 }
@@ -694,7 +694,7 @@
 
 .inv-pad-cat {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   font-weight: bold;
@@ -703,7 +703,7 @@
 }
 
 .inv-pad-name {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--text-main);
   margin: 2px 0;
   line-height: 1.4;
@@ -740,7 +740,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
 }
 
@@ -761,18 +761,18 @@
 
 .inv-gift-store {
   font-family: var(--font-heading);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-main);
 }
 
 .inv-gift-detail {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   color: var(--text-light);
 }
 
 .inv-gift-arrow {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--primary-color);
 }
 
@@ -796,7 +796,7 @@
 }
 
 .inv-kids-emoji {
-  font-size: 2rem;
+  font-size: 2.1rem;
   flex-shrink: 0;
   width: 50px;
   height: 50px;
@@ -816,7 +816,7 @@
 
 .inv-kids-title {
   font-family: var(--font-heading);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-main);
   margin: 0;
@@ -824,7 +824,7 @@
 
 .inv-kids-text .inv-body-text {
   text-align: left;
-  font-size: 1.02rem;
+  font-size: 1.12rem;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -883,20 +883,20 @@
 
 .inv-contact-name {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-main);
 }
 
 .inv-contact-role {
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   color: var(--text-light);
   line-height: 1.35;
 }
 
 .inv-contact-phone {
   font-family: var(--font-heading);
-  font-size: 1.02rem;
+  font-size: 1.12rem;
   color: var(--primary-dark);
   font-weight: 600;
   white-space: nowrap;
@@ -918,13 +918,13 @@
 
 .inv-footer-mono {
   font-family: var(--font-names);
-  font-size: 3.8rem;
+  font-size: 3.9rem;
   color: var(--primary-dark);
   margin: 0;
 }
 
 .inv-footer-tag {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-light);
   letter-spacing: 0.4px;
   margin: 0;

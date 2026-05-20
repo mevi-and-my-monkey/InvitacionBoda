@@ -14,10 +14,10 @@ function getTimeLeft() {
   const diff = WEDDING_DATE - Date.now();
   if (diff <= 0) return { days: 0, hours: 0, mins: 0, segs: 0 };
   return {
-    days:  Math.floor(diff / 86400000),
+    days: Math.floor(diff / 86400000),
     hours: Math.floor((diff % 86400000) / 3600000),
-    mins:  Math.floor((diff % 3600000) / 60000),
-    segs:  Math.floor((diff % 60000) / 1000),
+    mins: Math.floor((diff % 3600000) / 60000),
+    segs: Math.floor((diff % 60000) / 1000),
   };
 }
 
@@ -59,26 +59,26 @@ function downloadICS() {
 }
 
 // ── Data ───────────────────────────────────────────────────
-const MISA_LINK      = 'https://maps.app.goo.gl/YYMgzXCX4R5BkpSK9';
+const MISA_LINK = 'https://maps.app.goo.gl/YYMgzXCX4R5BkpSK9';
 const RECEPCION_LINK = 'https://maps.app.goo.gl/4RfwJkoV3HnNcngL6';
 
 const ITINERARY = [
-  { time: '5:00 PM',  event: 'Ceremonia religiosa',    sub: 'Parroquia Señor de la Misericordia' },
-  { time: '6:00 PM',  event: 'Sesión de fotos',        sub: 'Cocktail para los invitados'        },
-  { time: '6:30 PM',  event: 'Recepción',              sub: 'Lienzo Charro de Aragón'            },
-  { time: '8:00 PM',  event: 'Cena',                   sub: 'Servida en sus mesas'               },
-  { time: '9:30 PM',  event: 'Primer baile y brindis', sub: ''                                   },
-  { time: '10:00 PM', event: '¡A bailar!',             sub: 'Pista abierta toda la noche'        },
-  { time: '2:00 AM',  event: 'Tornaboda',              sub: 'Para los más fiesteros'             },
+  { time: '5:00 PM', event: 'Ceremonia religiosa', sub: 'Parroquia Señor de la Misericordia' },
+  { time: '6:00 PM', event: 'Sesión de fotos', sub: 'Cocktail para los invitados' },
+  { time: '6:30 PM', event: 'Recepción', sub: 'Lienzo Charro de Aragón' },
+  { time: '8:00 PM', event: 'Cena', sub: 'Servida en sus mesas' },
+  { time: '9:30 PM', event: 'Primer baile y brindis', sub: '' },
+  { time: '10:00 PM', event: '¡A bailar!', sub: 'Pista abierta toda la noche' },
+  { time: '2:00 AM', event: 'Tornaboda', sub: 'Para los más fiesteros' },
 ];
 
 const PADRINOS_GRID = [
-  { cat: 'Anillos',  p: ['Gris Torres',   ' ']   },
-  { cat: 'Lazos',    p: ['Guadalupe Mendez',  'Victor Romero']   },
-  { cat: 'Arras',    p: ['Ernesto Villafuerte',        'Evelia']    },
-  { cat: 'Biblia',   p: ['Manuela Torres',     'Eustaquio']   },
-  { cat: 'Ramo',     p: ['Diana Mejia',  ' ']  },
-  { cat: 'Medallas', p: ['Patricia Garcia',     ' '] },
+  { cat: 'Anillos', p: ['Gris Torres', ' '] },
+  { cat: 'Lazos', p: ['Guadalupe Mendez', 'Victor Romero'] },
+  { cat: 'Arras', p: ['Ernesto Villafuerte', 'Evelia'] },
+  { cat: 'Biblia', p: ['Manuela Torres', 'Eustaquio'] },
+  { cat: 'Ramo', p: ['Diana Mejia', ' '] },
+  { cat: 'Medallas', p: ['Patricia Garcia', ' '] },
 ];
 
 // ── Shared components ──────────────────────────────────────
@@ -87,7 +87,7 @@ const SectionLabel = ({ children }) => (
 );
 
 const fadeUp = {
-  hidden:  { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
 };
 
@@ -116,7 +116,7 @@ export default function Invitation({ guestName, tickets }) {
     audio.loop = true;
     const play = audio.play();
     if (play !== undefined) {
-      play.then(() => setPlaying(true)).catch(() => {});
+      play.then(() => setPlaying(true)).catch(() => { });
     }
   }, []);
 
@@ -202,10 +202,10 @@ export default function Invitation({ guestName, tickets }) {
         <SectionLabel>— FALTAN —</SectionLabel>
         <div className="inv-cd-grid">
           {[
-            { v: time.days,  l: 'días'  },
+            { v: time.days, l: 'días' },
             { v: time.hours, l: 'horas' },
-            { v: time.mins,  l: 'mins'  },
-            { v: time.segs,  l: 'seg'   },
+            { v: time.mins, l: 'mins' },
+            { v: time.segs, l: 'seg' },
           ].map(({ v, l }) => (
             <div key={l} className="inv-cd-item">
               <span className="inv-cd-num">{v}</span>
@@ -319,6 +319,24 @@ export default function Invitation({ guestName, tickets }) {
           Te pedimos reservar el blanco para la novia —<br />
           ¡cualquier otro color es bienvenido!
         </p>
+      </Sec>
+
+      {/* ── PADRES ────────────────────────────── */}
+      <Sec>
+        <SectionLabel>— CON LA BENDICIÓN DE —</SectionLabel>
+        <h2 className="inv-section-title">Nuestros padres</h2>
+
+        <div className="inv-honor-card">
+          <p className="inv-honor-label">PADRES DE LA NOVIA</p>
+          <p className="inv-honor-name">Guadalupe Torres</p>
+          <p className="inv-honor-name">Hugo Garcia</p>
+        </div>
+
+        <div className="inv-honor-card" style={{ marginTop: '1.5rem' }}>
+          <p className="inv-honor-label">PADRES DEL NOVIO</p>
+          <p className="inv-honor-name">Alicia Villafuerte</p>
+          <p className="inv-honor-name">Martin Mejia</p>
+        </div>
       </Sec>
 
       {/* ── PADRINOS ──────────────────────────── */}

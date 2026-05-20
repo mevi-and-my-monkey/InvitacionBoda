@@ -48,26 +48,35 @@ export default function Envelope({ onOpen }) {
         >
           {/* Envelope body */}
           <div className="env-body">
-            {/* Bottom V crease */}
-            <div className="env-crease-bottom" />
-            {/* Side fold shadows */}
-            <div className="env-fold-left" />
-            <div className="env-fold-right" />
-            {/* Letter peeking out when opening */}
-            <motion.div
-              className="env-letter"
-              animate={phase === 'opening' ? { y: -65, opacity: 1 } : { y: 8, opacity: 0.9 }}
-              transition={{ delay: 0.35, duration: 0.55, ease: 'easeOut' }}
-            >
-              <span className="env-monogram">A &amp; D</span>
-            </motion.div>
+            {/* Front folds wrapped to hide overflowing corners without clipping the letter */}
+            <div className="env-front-folds">
+              {/* Bottom V crease */}
+              <div className="env-crease-bottom" />
+              {/* Side fold shadows */}
+              <div className="env-fold-left" />
+              <div className="env-fold-right" />
+            </div>
+            {/* Mask to clip letter at the bottom but allow it to rise at the top */}
+            <div className="env-letter-mask">
+              <motion.div
+                className="env-letter"
+                animate={phase === 'opening' ? { y: -90, opacity: 1 } : { y: 80, opacity: 1 }}
+                transition={{ delay: 0.35, duration: 0.6, ease: 'easeOut' }}
+              >
+                <span className="env-monogram">A &amp; D</span>
+              </motion.div>
+            </div>
           </div>
 
           {/* Flap — triangle pointing down, rotates open */}
           <motion.div
             className="env-flap"
-            animate={phase === 'opening' ? { rotateX: -180 } : { rotateX: 0 }}
-            transition={{ duration: 0.72, ease: [0.4, 0, 0.2, 1] }}
+            animate={phase === 'opening' ? { rotateX: -180, zIndex: 1 } : { rotateX: 0, zIndex: 10 }}
+            transition={{
+              duration: 0.72,
+              ease: [0.4, 0, 0.2, 1],
+              zIndex: { delay: phase === 'opening' ? 0.36 : 0 }
+            }}
             style={{ transformOrigin: 'top center', transformPerspective: 1400 }}
           />
         </div>

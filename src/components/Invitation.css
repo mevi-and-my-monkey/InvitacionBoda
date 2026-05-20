@@ -300,7 +300,8 @@
 .inv-countdown {
   background: var(--surface-color);
   border-radius: 20px;
-  margin: 16px 16px 0;
+  margin: 16px auto 0;
+  width: calc(100% - 32px);
   box-shadow: 0 4px 24px rgba(58,58,74,0.07);
   padding: 28px 20px;
 }

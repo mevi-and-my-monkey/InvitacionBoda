@@ -323,19 +323,21 @@ export default function Invitation({ guestName, tickets }) {
 
       {/* ── PADRES ────────────────────────────── */}
       <Sec>
-        <SectionLabel>— CON LA BENDICIÓN DE —</SectionLabel>
+        <SectionLabel>— CON AMOR Y GRATITUD  —</SectionLabel>
         <h2 className="inv-section-title">Nuestros padres</h2>
 
-        <div className="inv-honor-card">
-          <p className="inv-honor-label">PADRES DE LA NOVIA</p>
-          <p className="inv-honor-name">Guadalupe Torres</p>
-          <p className="inv-honor-name">Hugo Garcia</p>
-        </div>
-
-        <div className="inv-honor-card" style={{ marginTop: '1.5rem' }}>
-          <p className="inv-honor-label">PADRES DEL NOVIO</p>
-          <p className="inv-honor-name">Alicia Villafuerte</p>
-          <p className="inv-honor-name">Martin Mejia</p>
+        <div className="inv-parents">
+          <div className="inv-parent-col">
+            <p className="inv-parent-label">Padres de la novia</p>
+            <p className="inv-parent-name">Guadalupe Torres</p>
+            <p className="inv-parent-name">Hugo Garcia</p>
+          </div>
+          <div className="inv-parent-divider" aria-hidden="true" />
+          <div className="inv-parent-col">
+            <p className="inv-parent-label">Padres del novio</p>
+            <p className="inv-parent-name">Alicia Villafuerte</p>
+            <p className="inv-parent-name">Martin Mejia</p>
+          </div>
         </div>
       </Sec>
 

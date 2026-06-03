@@ -35,7 +35,7 @@ export default function Envelope({ onOpen }) {
           <span className="env-name-script">Alejandro</span>
         </div>
 
-        <p className="env-date-label">Sábado · 24 Abril · 2027</p>
+        <p className="env-date-label">Sábado · 24 de Abril · 2027</p>
 
         {/* Envelope shape */}
         <div

@@ -73,12 +73,12 @@ const ITINERARY = [
 ];
 
 const PADRINOS_GRID = [
-  { cat: 'Anillos', p: ['Gris Torres', ' '] },
-  { cat: 'Lazos', p: ['Guadalupe Mendez', 'Victor Romero'] },
+  { cat: 'Anillos', p: ['Griselda Torres', ' '] },
+  { cat: 'Lazos', p: ['Guadalupe Méndez', 'Víctor Romero'] },
   { cat: 'Arras', p: ['Ernesto Villafuerte', 'Evelia'] },
-  { cat: 'Biblia', p: ['Manuela Torres', 'Eustaquio'] },
-  { cat: 'Ramo', p: ['Diana Mejia', ' '] },
-  { cat: 'Medallas', p: ['Patricia Garcia', ' '] },
+  { cat: 'Biblia', p: ['Manuela Torres', 'Eustaquio Hernández'] },
+  { cat: 'Ramo', p: ['Diana Mejía', ' '] },
+  { cat: 'Medallas', p: ['Patricia García', 'Victor Hurtado'] },
 ];
 
 // ── Shared components ──────────────────────────────────────
@@ -323,20 +323,20 @@ export default function Invitation({ guestName, tickets }) {
 
       {/* ── PADRES ────────────────────────────── */}
       <Sec>
-        <SectionLabel>— CON AMOR Y GRATITUD  —</SectionLabel>
+        <SectionLabel>— CON AMOR Y GRATITUD —</SectionLabel>
         <h2 className="inv-section-title">Nuestros padres</h2>
 
         <div className="inv-parents">
           <div className="inv-parent-col">
             <p className="inv-parent-label">Padres de la novia</p>
             <p className="inv-parent-name">Guadalupe Torres</p>
-            <p className="inv-parent-name">Hugo Garcia</p>
+            <p className="inv-parent-name">Hugo García</p>
           </div>
           <div className="inv-parent-divider" aria-hidden="true" />
           <div className="inv-parent-col">
             <p className="inv-parent-label">Padres del novio</p>
             <p className="inv-parent-name">Alicia Villafuerte</p>
-            <p className="inv-parent-name">Martin Mejia</p>
+            <p className="inv-parent-name">Martín Mejía</p>
           </div>
         </div>
       </Sec>
@@ -349,8 +349,8 @@ export default function Invitation({ guestName, tickets }) {
         <div className="inv-honor-card">
           <p className="inv-honor-label">PADRINOS DE HONOR</p>
           <p className="inv-honor-cat">Velación</p>
-          <p className="inv-honor-name">Mayra Garcia</p>
-          <p className="inv-honor-name">Felix Parra</p>
+          <p className="inv-honor-name">Mayra García</p>
+          <p className="inv-honor-name">Félix Parra</p>
         </div>
 
         <div className="inv-pad-grid">
@@ -368,7 +368,7 @@ export default function Invitation({ guestName, tickets }) {
         <SectionLabel>— SI GUSTAS REGALARNOS —</SectionLabel>
         <h2 className="inv-section-title">Mesa de regalos</h2>
         <p className="inv-body-text">
-          Tu presencia ya es regalo más que suficiente.<br />Si deseas algo más:
+          Tu presencia ya es un regalo más que suficiente.<br />Si deseas algo más:
         </p>
         <div className="inv-gifts">
           <a

@@ -1,14 +1,14 @@
 :root {
-  --primary-color: #A8BAA1;
-  --primary-dark: #A86473;
-  --background-color: #F6EFE7;
-  --surface-color: #FBF6F0;
+  --primary-color: #FFB3C1;
+  --primary-dark: #FF8DA1;
+  --background-color: #FFF5F7;
+  --surface-color: #FFFFFF;
   --text-main: #3A3A4A;
   --text-light: #7A7A8C;
   --accent-color: #C9A25E;
-  --navy: #3E5170;
-  --blue: #5B6F8E;
-  --rose: #C98A98;
+  --navy: #00123F;
+  --blue: #002966;
+  --rose: #FF8DA1;
 
   --font-names:   'Pinyon Script', cursive;
   --font-heading: 'Cormorant Garamond', serif;
@@ -25,7 +25,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-body);
-  background-color: #EDE5DC;
+  background-color: #FFE4EA;
   color: var(--text-main);
   display: flex;
   justify-content: center;

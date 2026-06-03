@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(62,81,112,0.35);
+  box-shadow: 0 4px 16px rgba(0,18,63,0.35);
   cursor: pointer;
   transition: background 0.25s, transform 0.2s;
 }
@@ -40,16 +40,16 @@
   z-index: 0;
 }
 
-.inv-petal-0  { left:  5%; width: 13px; height: 13px; background: #C98A98; animation-duration:  9.0s; animation-delay: 0.5s; }
-.inv-petal-1  { left: 15%; width: 20px; height: 20px; background: #A8BAA1; animation-duration: 12.0s; animation-delay: 2.0s; }
-.inv-petal-2  { left: 28%; width: 11px; height: 11px; background: #C98A98; animation-duration: 10.0s; animation-delay: 4.0s; }
-.inv-petal-3  { left: 42%; width: 18px; height: 18px; background: #C9A25E; animation-duration: 13.0s; animation-delay: 1.0s; }
-.inv-petal-4  { left: 55%; width: 15px; height: 15px; background: #C98A98; animation-duration: 11.0s; animation-delay: 3.0s; }
-.inv-petal-5  { left: 68%; width: 22px; height: 22px; background: #A8BAA1; animation-duration:  9.5s; animation-delay: 5.0s; }
-.inv-petal-6  { left: 78%; width: 13px; height: 13px; background: #A86473; animation-duration: 14.0s; animation-delay: 1.5s; }
-.inv-petal-7  { left: 88%; width: 17px; height: 17px; background: #C9A25E; animation-duration: 10.5s; animation-delay: 3.5s; }
-.inv-petal-8  { left: 33%; width:  9px; height:  9px; background: #A8BAA1; animation-duration: 12.5s; animation-delay: 6.0s; }
-.inv-petal-9  { left: 60%; width: 19px; height: 19px; background: #C98A98; animation-duration:  8.5s; animation-delay: 2.5s; }
+.inv-petal-0  { left:  5%; width: 13px; height: 13px; background: #FF8DA1; animation-duration:  9.0s; animation-delay: 0.5s; }
+.inv-petal-1  { left: 15%; width: 20px; height: 20px; background: #FFB3C1; animation-duration: 12.0s; animation-delay: 2.0s; }
+.inv-petal-2  { left: 28%; width: 11px; height: 11px; background: #FF8DA1; animation-duration: 10.0s; animation-delay: 4.0s; }
+.inv-petal-3  { left: 42%; width: 18px; height: 18px; background: #FFD6DF; animation-duration: 13.0s; animation-delay: 1.0s; }
+.inv-petal-4  { left: 55%; width: 15px; height: 15px; background: #FF8DA1; animation-duration: 11.0s; animation-delay: 3.0s; }
+.inv-petal-5  { left: 68%; width: 22px; height: 22px; background: #FFB3C1; animation-duration:  9.5s; animation-delay: 5.0s; }
+.inv-petal-6  { left: 78%; width: 13px; height: 13px; background: #002966; animation-duration: 14.0s; animation-delay: 1.5s; }
+.inv-petal-7  { left: 88%; width: 17px; height: 17px; background: #FFD6DF; animation-duration: 10.5s; animation-delay: 3.5s; }
+.inv-petal-8  { left: 33%; width:  9px; height:  9px; background: #FFB3C1; animation-duration: 12.5s; animation-delay: 6.0s; }
+.inv-petal-9  { left: 60%; width: 19px; height: 19px; background: #FF8DA1; animation-duration:  8.5s; animation-delay: 2.5s; }
 
 @keyframes invFloatPetal {
   0%   { transform: translateY(110vh) rotate(0deg);   opacity: 0; }
@@ -71,7 +71,7 @@
 
 /* Subtle stripe rhythm */
 .inv-section:nth-child(even) {
-  background: rgba(168, 186, 161, 0.07);
+  background: rgba(255,141,161, 0.07);
 }
 
 /* ─── Section label & title ─────────────────────────────── */
@@ -93,7 +93,7 @@
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(201,138,152,0.3);
+  background: rgba(255,141,161,0.3);
   max-width: 40px;
 }
 
@@ -127,7 +127,7 @@
 .inv-hero {
   padding: 0;
   gap: 0;
-  background: linear-gradient(180deg, #F5E8EC 0%, #F6EFE7 55%);
+  background: linear-gradient(180deg, #FFE0E8 0%, #FFF5F7 55%);
 }
 
 .inv-hero-top {
@@ -185,7 +185,7 @@
   margin: 18px auto 0;
   overflow: hidden;
   border: 5px solid rgba(255,255,255,0.85);
-  box-shadow: 0 10px 40px rgba(62,81,112,0.13);
+  box-shadow: 0 10px 40px rgba(0,18,63,0.13);
 }
 
 .inv-hero-img {
@@ -237,7 +237,7 @@
 .inv-date-divider {
   width: 1px;
   height: 46px;
-  background: rgba(168, 100, 115, 0.456);
+  background: rgba(255,141,161,0.45);
   flex-shrink: 0;
 }
 
@@ -324,7 +324,7 @@
   border-radius: 14px;
   padding: 12px 4px;
   box-shadow: 0 2px 10px rgba(58,58,74,0.07);
-  border: 1px solid rgba(168,186,161,0.18);
+  border: 1px solid rgba(255,141,161,0.18);
 }
 
 .inv-cd-num {
@@ -386,7 +386,7 @@
 }
 
 .inv-cal-btn-outline:hover {
-  background: rgba(62,81,112,0.08);
+  background: rgba(0,18,63,0.08);
   border-color: var(--navy);
   transform: translateY(-1px);
 }
@@ -399,7 +399,7 @@
   background: var(--surface-color);
   border-radius: 18px;
   padding: 20px 20px 16px;
-  border: 1px solid rgba(168, 186, 161, 0.25);
+  border: 1px solid rgba(255,141,161, 0.25);
   box-shadow: 0 4px 18px rgba(58,58,74,0.06);
   text-align: left;
   display: flex;
@@ -459,7 +459,7 @@
   overflow: hidden;
   height: 155px;
   margin-top: 6px;
-  border: 1px solid rgba(168,186,161,0.2);
+  border: 1px solid rgba(255,141,161,0.2);
 }
 
 .inv-venue-map {
@@ -649,7 +649,7 @@
   padding: 26px 24px;
   text-align: center;
   width: 100%;
-  box-shadow: 0 6px 24px rgba(62,81,112,0.28);
+  box-shadow: 0 6px 24px rgba(0,18,63,0.28);
 }
 
 .inv-honor-label {
@@ -688,7 +688,7 @@
   background: var(--surface-color);
   border-radius: 14px;
   padding: 14px 12px;
-  border: 1px solid rgba(168,186,161,0.2);
+  border: 1px solid rgba(255,141,161,0.2);
   text-align: center;
   box-shadow: 0 2px 8px rgba(58,58,74,0.05);
 }
@@ -727,7 +727,7 @@
   padding: 16px 20px;
   background: var(--surface-color);
   border-radius: 14px;
-  border: 1px solid rgba(168,186,161,0.2);
+  border: 1px solid rgba(255,141,161,0.2);
   text-decoration: none;
   box-shadow: 0 2px 10px rgba(58,58,74,0.05);
   transition: box-shadow 0.25s, transform 0.2s;
@@ -791,7 +791,7 @@
   background: var(--surface-color);
   border-radius: 16px;
   padding: 18px 20px;
-  border: 1px solid rgba(168,186,161,0.2);
+  border: 1px solid rgba(255,141,161,0.2);
   box-shadow: 0 2px 10px rgba(58,58,74,0.05);
   width: 100%;
 }
@@ -852,7 +852,7 @@
   padding: 16px;
   background: var(--surface-color);
   border-radius: 16px;
-  border: 1px solid rgba(168,186,161,0.2);
+  border: 1px solid rgba(255,141,161,0.2);
   text-decoration: none;
   box-shadow: 0 2px 10px rgba(58,58,74,0.05);
   transition: box-shadow 0.25s;
@@ -866,7 +866,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(168,186,161,0.18);
+  background: rgba(255,141,161,0.18);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -16,7 +16,7 @@
 
 /* ─── Dark header ───────────────────────────────────────── */
 .cf-header {
-  background: linear-gradient(150deg, #2d3a4a 0%, #3d5068 100%);
+  background: linear-gradient(150deg, #00123F 0%, #002966 100%);
   padding: 30px 24px 26px;
   text-align: center;
 }
@@ -153,10 +153,10 @@
 }
 
 .cf-toggle-btn.active {
-  background: #2d3a4a;
-  border-color: #2d3a4a;
+  background: #00123F;
+  border-color: #00123F;
   color: white;
-  box-shadow: 0 3px 10px rgba(45,58,74,0.28);
+  box-shadow: 0 3px 10px rgba(0,18,63,0.28);
 }
 
 .cf-toggle-btn:hover:not(.active) {
@@ -247,7 +247,7 @@
 
 /* ─── Submit ────────────────────────────────────────────── */
 .cf-submit {
-  background: #2d3a4a;
+  background: #00123F;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -258,14 +258,14 @@
   width: 100%;
   box-sizing: border-box;
   transition: background 0.25s, opacity 0.25s;
-  box-shadow: 0 3px 12px rgba(45,58,74,0.22);
+  box-shadow: 0 3px 12px rgba(0,18,63,0.22);
   display: block;
   margin-top: 2px;
   text-align: center;
 }
 
 .cf-submit:hover:not(:disabled) {
-  background: #3d5068;
+  background: #002966;
 }
 
 .cf-submit:disabled {

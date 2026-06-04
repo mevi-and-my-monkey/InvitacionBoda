@@ -317,7 +317,7 @@ export default function Invitation({ guestName, tickets }) {
         </div>
         <p className="inv-body-text inv-italic-note">
           Te pedimos reservar el blanco para la novia —<br />
-          ¡cualquier otro color es bienvenido!
+          ¡Cualquier otro color es bienvenido!
         </p>
       </Sec>
 
@@ -372,7 +372,7 @@ export default function Invitation({ guestName, tickets }) {
         </p>
         <div className="inv-gifts">
           <a
-            href="https://www.liverpool.com.mx"
+            href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52011107"
             target="_blank"
             rel="noopener noreferrer"
             className="inv-gift-row"
@@ -380,19 +380,19 @@ export default function Invitation({ guestName, tickets }) {
             <span className="inv-gift-icon">🎁</span>
             <div className="inv-gift-info">
               <span className="inv-gift-store">Liverpool</span>
-              <span className="inv-gift-detail">Mesa N° S1234</span>
+              <span className="inv-gift-detail">Mesa N° 52011107</span>
             </div>
             <span className="inv-gift-arrow">→</span>
           </a>
           <a
-            href="https://www.amazon.com.mx"
+            href="https://www.amazon.com.mx/wedding/guest-view/1QRKG4E1JGTWV"
             target="_blank"
             rel="noopener noreferrer"
             className="inv-gift-row"
           >
             <span className="inv-gift-icon">🎁</span>
             <div className="inv-gift-info">
-              <span className="inv-gift-store">Amazon</span>
+              <span className="inv-gift-store">Amazon</span> 
               <span className="inv-gift-detail">Lista A&amp;D 2027</span>
             </div>
             <span className="inv-gift-arrow">→</span>

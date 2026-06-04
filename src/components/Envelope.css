@@ -1,7 +1,7 @@
 .env-screen {
   position: fixed;
   inset: 0;
-  background: linear-gradient(155deg, #FFE0E8 0%, #FFF5F7 50%, #FFD6DF 100%);
+  background: linear-gradient(155deg, #F6EFE7 0%, #FBF6F0 50%, #EDE5DC 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,7 +106,7 @@
 .env-body {
   position: absolute;
   inset: 0;
-  background: linear-gradient(170deg, #FFF5F7, #FFE0E8);
+  background: linear-gradient(170deg, #FBF6F0, #F6EFE7);
   border: 1.5px solid rgba(201, 162, 94, 0.35);
   border-radius: 10px;
   box-shadow: 0 10px 36px rgba(0,18,63,0.1);
@@ -131,7 +131,7 @@
   left: 0;
   width: 100%;
   height: 60%;
-  background: #FFB3C1;
+  background: #EDD9C0;
   clip-path: polygon(0 100%, 50% 0, 100% 100%);
   z-index: 1;
 }
@@ -171,7 +171,7 @@
   left: 14%;
   width: 72%;
   height: 140px;
-  background: #FFF5F7;
+  background: #FBF6F0;
   border: 1px solid rgba(201, 162, 94, 0.25);
   border-radius: 3px;
   z-index: 5;
@@ -199,7 +199,7 @@
   left: 0;
   width: 100%;
   height: 55%;          /* how tall the triangle is */
-  background: linear-gradient(168deg, #FFF5F7, #FFD6DF);
+  background: linear-gradient(168deg, #FBF6F0, #F0E4D0);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   z-index: 10;
   border-radius: 10px 10px 0 0;

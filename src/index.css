@@ -1,8 +1,8 @@
 :root {
   --primary-color: #FFB3C1;
   --primary-dark: #FF8DA1;
-  --background-color: #FFF5F7;
-  --surface-color: #FFFFFF;
+  --background-color: #F6EFE7;
+  --surface-color: #FBF6F0;
   --text-main: #3A3A4A;
   --text-light: #7A7A8C;
   --accent-color: #C9A25E;
@@ -25,7 +25,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-body);
-  background-color: #FFE4EA;
+  background-color: #EDE5DC;
   color: var(--text-main);
   display: flex;
   justify-content: center;
